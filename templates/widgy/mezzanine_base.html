@@ -1,0 +1,24 @@
+{% extends "layout_base.html" %}
+{% load pages_tags %}
+
+{% block metadata %}
+<title>{{ page.meta_title }}</title>
+<meta name="description" content="{{ page.description }}" />
+<meta name="keywords" content="{{ page.get_content_model.seo_keywords }}" />
+{% if page.extension.meta_robots %}
+<meta name="robots" content="{{ page.extension.meta_robots }}">
+{% endif %}
+{% if page.extension.meta_custom %}
+{{ page.extension.meta_custom|safe }}
+{% endif %}
+{% endblock %}
+
+{% block body_css_class %}{% if page.slug == "/" %} class="nav-home-page"{% else %} class="inner"{% endif %}{% endblock %}
+
+{% block leftnav %}
+  {% page_menu 'pages/menus/leftnav.html' %}
+{% endblock %}
+
+{% block breadcrumb %}
+{{ block.super }} {% page_menu 'pages/menus/breadcrumb.html' %}
+{% endblock %}

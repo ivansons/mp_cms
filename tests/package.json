@@ -1,0 +1,35 @@
+{
+  "name": "matterport-qa",
+  "version": "1.0.0",
+  "description": "Set up test environment to run CMS tests via Protractor.",
+  "main": "conf.js",
+  "private": false,
+  "scripts": {
+    "test": "protractor conf.js"
+  },
+
+  "dependencies": {
+    "protractor": "~3.0.0",
+    "png-image": "~1.0.0",
+    "jasmine": "~2.4.1",
+    "jasminewd": "~1.1.0",
+    "jasminewd2": "~0.0.6",
+    "selenium-webdriver": "~2.53.0",
+    "protractor-jasmine2-html-reporter": "~0.0.5",
+    "jasmine-reporters": "~2.0.7",
+    "jasmine-spec-reporter" : "2.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MrUkyoDuong/pix-diff"
+  },
+  "author": {
+    "name": "Ukyo Duong @Matterport",
+    "personal_email": "ukyoduong@yahoo.com",
+    "work_email": "ukyo@matterport.com"
+  },
+  "bugs": {
+    "url": "https://ghe.matterport.com/matterport/qa/issues"
+  },
+  "homepage": "https://matterport.com"
+}

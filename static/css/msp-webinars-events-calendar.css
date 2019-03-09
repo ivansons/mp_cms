@@ -1,0 +1,130 @@
+#msp-webinars-events-calendar {
+  text-align: center;
+}
+#msp-webinars-events-calendar iframe {
+  width: 800px;
+  height: 600px;
+}
+@media screen and (max-width: 768px) {
+  .container.media-kit-box.msp-webinar-event .col-xs-4 img {
+    max-width: 100px;
+  }
+}
+
+/* iPhone 4 and 4S Portrait and Landscape */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+  #msp-webinars-events-calendar iframe {
+    width: 450px;
+    height: 450px;
+  }
+}
+
+/* iPhone 5 and 5S Portrait and Landscape */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+  #msp-webinars-events-calendar iframe {
+    width: 538px;
+    height: 538px;
+  }
+}
+
+/* iPhone 6 Portrait and Landscape */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+  #msp-webinars-events-calendar iframe {
+    width: 637px;
+    height: 600px;
+  }
+}
+
+/* iPhone 6+ Portrait and Landscape */
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px)
+  and (-webkit-min-device-pixel-ratio: 3) {
+  #msp-webinars-events-calendar iframe {
+    width: 706px;
+    height: 600px;
+  }
+}
+
+/* Galaxy S3 Portrait and Landscape */
+@media screen and (device-width: 320px) and (device-height: 640px)
+  and (-webkit-device-pixel-ratio: 2) {
+  #msp-webinars-events-calendar iframe {
+    width: 610px;
+    height: 600px;
+  }
+}
+
+/* Galaxy S4 Portrait and Landscape */
+@media screen and (device-width: 320px) and (device-height: 640px)
+  and (-webkit-device-pixel-ratio: 3) {
+  #msp-webinars-events-calendar iframe {
+    width: 610px;
+    height: 600px;
+  }
+}
+
+/* Galaxy S5 Portrait and Landscape */
+@media screen and (device-width: 360px) and (device-height: 640px)
+  and (-webkit-device-pixel-ratio: 3) {
+  #msp-webinars-events-calendar iframe {
+    width: 610px;
+    height: 600px;
+  }
+}
+
+/* HTC One Portrait and Landscape */
+@media screen and (device-width: 360px) and (device-height: 640px)
+  and (-webkit-device-pixel-ratio: 3) {
+  #msp-webinars-events-calendar iframe {
+    width: 610px;
+    height: 600px;
+  }
+}
+
+/* iPad 1, 2, & mini Portrait and Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px)
+  and (-webkit-min-device-pixel-ratio: 1) {
+  #msp-webinars-events-calendar iframe {
+    width: 738px;
+    height: 600px;
+  }
+}
+
+/* ----------- iPad 3 and 4 ----------- */
+/* Portrait and Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+  #msp-webinars-events-calendar iframe {
+    width: 738px;
+    height: 600px;
+  }
+}
+
+/* Galaxy Tab 10.1 Portrait and Landscape */
+@media screen and (min-device-width: 800px) and (max-device-width: 1280px) {
+  #msp-webinars-events-calendar iframe {
+    width: 770px;
+    height: 600px;
+  }
+}
+
+/* Asus Nexus 7 Portrait and Landscape */
+@media screen and (device-width: 601px) and (device-height: 906px)
+  and (-webkit-min-device-pixel-ratio: 1.331)
+  and (-webkit-max-device-pixel-ratio: 1.332) {
+  #msp-webinars-events-calendar iframe {
+    width: 570px;
+    height: 570px;
+  }
+}
+
+/* Kindle Fire HD 7" Portrait and Landscape */
+@media only screen and (min-device-width: 800px) and (max-device-width: 1280px)
+  and (-webkit-min-device-pixel-ratio: 1.5) {
+  #msp-webinars-events-calendar iframe {
+    width: 770px;
+    height: 600px;
+  }
+}

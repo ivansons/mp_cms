@@ -1,0 +1,106 @@
+@media screen and (max-width: 700px) {
+  .price-block .titles-1 {
+    top: 201px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .price-block .titles {
+    position: absolute;
+    left: 0px;
+    bottom: 84px;
+    right: 13px;
+    text-align: left;
+    z-index: 9999;
+    padding-left: 13px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .price-block .col {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .price-block .block {
+    background: rgba(248,248,248,0.75);
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .price-block {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .price-block .inner {
+    width: 100%;
+    padding: 0 0 0 0px;
+  }
+}
+
+#footer-new {
+  background-color: #fff;
+}
+
+/* Modify settings for justified navigation bar when viewed from non-mobile
+device */
+@media screen and (min-width: 768px), screen and (min-width: 768px) and
+(orientation: landscape), screen and (min-width: 768px) and
+(orientation: portrait) {
+  .menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .real-estate-menu {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  /* fix width of nav for correct justified rendering */
+  .menu > ul:after {
+    width: inherit;
+  }
+
+  #header .inner-page.real-estate-vertical {
+    padding: 0px 0 11px 0px;
+    width: 100%;
+  }
+}
+
+.inner-page.real-estate-vertical .nav-bar .top .btn-buy {
+  background: #faac17;
+}
+
+.inner-page.real-estate-vertical .nav-bar .top .btn-buy:hover {
+  background-color: #00b8ce;
+}
+
+.inner-page.real-estate-vertical .nav-bar .top ul li a:hover,
+.scrolled .nav-bar .top ul li a:hover {
+  color: #faac17;
+}
+
+#content-height.inner-page .slick-initialized.slick-slider a:focus {
+  color: #fbb81b;
+  text-decoration: none;
+}
+
+.real-estate-menu a:focus {
+  text-decoration: none;
+}
+
+#content-height.inner-page .btn-default.active.focus,
+#content-height.inner-page .btn-default.active:focus,
+#content-height.inner-page .btn-default.active:hover,
+#content-height.inner-page .btn-default:active.focus,
+#content-height.inner-page .btn-default:active:focus,
+#content-height.inner-page .btn-default:active:hover,
+#content-height.inner-page .btn-default:active:hover {
+  background-color: #002f40;
+  color: white;
+}

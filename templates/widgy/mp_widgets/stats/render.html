@@ -1,0 +1,32 @@
+{% load staticfiles %}
+{% load widgy_tags %}
+{% with css_style=self.get_css_style %}
+  <div class="{{ self.css_class|default:"w-section statistics" }}"{% if css_style %} style="{{ css_style }}"{% endif %}>
+    <div class="vertical-element">
+      <div class="w-container module-intro-container inside">
+        {% if self.main_title %}
+          <h2 class="white"{% if self.main_title_color %} style="color: {{ self.main_title_color }};"{% endif %}>{{ self.main_title }}</h2>
+        {% endif %}
+        {% if self.main_text %}
+          {% if self.main_text_is_raw_html %}
+            {{ self.main_text|safe }}
+          {% else %}
+            <p class="module-intro white"{% if self.main_text_color %} style="color: {{ self.main_text_color }};"{% endif %}>{{ self.main_text }}</p>
+          {% endif %}
+        {% endif %}
+      </div>
+      <div class="w-row stats-row">
+        {% for child in self.get_children %}
+          <div class="w-col w-col-4 center">
+            <div data-ix="new-interaction" class="stats-block center">
+              <div class="vertical-element">
+                <h4 class="stats-small"{% if child.title_color %} style="color: {{ child.title_color }};"{% endif %}>{{ child.title }}</h4>
+                <h1 class="stats-large"{% if child.subtitle_color %} style="color: {{ child.subtitle_color }};"{% endif %}>{{ child.subtitle }}</h1>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endwith %}

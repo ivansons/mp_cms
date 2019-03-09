@@ -1,0 +1,7 @@
+{% load staticfiles %}
+{% load widgy_tags %}
+<div class="w-container single-cta{% if self.css_class %} {{ self.css_class }}{% endif %}">
+  {% for child in self.get_children %}
+    {% render child %}
+  {% endfor %}
+</div>

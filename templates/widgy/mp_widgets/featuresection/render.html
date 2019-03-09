@@ -1,0 +1,71 @@
+{% load staticfiles %}
+{% load widgy_tags %}
+{% if self.css_class and self.background_image %}
+  <div class="{{ self.css_class }}" style="background-image: -webkit-radial-gradient(100% 0% circle, rgba(0, 0, 0, 0.49) 45%, rgba(0, 0, 0, 0)), url('{{ self.background_image.url }}'); background-image: radial-gradient(circle at 100% 0%, rgba(0, 0, 0, 0.49) 45%, rgba(0, 0, 0, 0)), url('{{ self.background_image.url }}');">
+{% elif self.css_class and self.background_color %}
+  <div class="{{ self.css_class }}" style="background-color: {{ self.background_color }};">
+{% elif self.css_class %}
+  <div class="{{ self.css_class }}">
+{% elif self.css_style %}
+  <div style="{{ self.css_style }}">
+{% elif self.background_image %}
+  <div class="w-section image-module" style="background-image: -webkit-radial-gradient(100% 0% circle, rgba(0, 0, 0, 0.49) 45%, rgba(0, 0, 0, 0)), url('{{ self.background_image.url }}'); background-image: radial-gradient(circle at 100% 0%, rgba(0, 0, 0, 0.49) 45%, rgba(0, 0, 0, 0)), url('{{ self.background_image.url }}');">
+{% elif self.background_color %}
+  <div class="w-section" style="height: 600px; padding-right: 30px; padding-left: 30px; background-color: {{ self.background_color }}; text-align: left;">
+{% else %}
+  <div class="w-section white-module">
+{% endif %}
+{% if self.background_image %}
+  <div class="w-container">
+    <div class="w-row">
+      {% if self.text_content_is_on_left %}
+        <div class="w-col w-col-6 content-module-column _600">
+          <div class="vertical-element">
+            {% render self.get_children.0 %}
+          </div>
+        </div>
+        <div class="w-col w-col-6"></div>
+      {% else %}
+        <div class="w-col w-col-6"></div>
+        <div class="w-col w-col-6 content-module-column _600">
+          <div class="vertical-element">
+            {% render self.get_children.0 %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+    {% if self.get_children|length == 2 %}
+      {% render self.get_children.1 %}
+    {% endif %}
+  </div>
+{% else %}
+  <div class="w-container">
+    <div class="w-row">
+      {% if self.text_content_is_on_left %}
+        <div class="w-col w-col-6 w-col-small-6 content-module-column">
+          <div class="vertical-element">
+            {% render self.get_children.0 %}
+          </div>
+        </div>
+        <div class="w-col w-col-6 w-col-small-6 content-module-column">
+          <div class="vertical-element"><img src="{{ self.foreground_image.url }}" data-ix="large-move-in-right" class="{% if self.large_image %}gallery-image{% else %}works-image{% endif %}">
+          </div>
+        </div>
+      {% else %}
+        <div class="w-col w-col-6 w-col-small-6 content-module-column">
+          <div class="vertical-element{% if self.large_image %} overflow-image-left{% endif %}"><img src="{{ self.foreground_image.url }}" data-ix="large-move-in-left" class="{% if self.large_image %}gallery-image{% else %}works-image{% endif %}">
+          </div>
+        </div>
+        <div class="w-col w-col-6 w-col-small-6 content-module-column">
+          <div class="vertical-element">
+            {% render self.get_children.0 %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+    {% if self.get_children|length == 2 %}
+      {% render self.get_children.1 %}
+    {% endif %}
+  </div>
+{% endif %}
+</div>

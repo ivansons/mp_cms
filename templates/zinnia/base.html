@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block body_css_class %} class="inner"{% endblock %}
+{% block extra_css %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/blog.css' %}">
+{% endblock %}
+{% block content %}
+  <div class="content grid">
+    {% block blog-top %}
+      <section class="top-section smaller" style="background-color: #335966;">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <h1>The Matterport Blog</h1>
+            </div>
+          </div>
+          </div>
+      </section>
+    {% endblock %}
+    {% block blog-content %}
+      <section class="info-section"{% if object_list %}id="blog-archive"{% endif %}>
+        <div class="container">
+          <main id="main" role="main" itemscope="" itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+            {% block blog-featured-post %}{% endblock %}
+            <div class="row">
+              {% block blog-main %}{% endblock %}
+              {% block blog-sidebar %}
+                {% include "zinnia/_sidebar.html" %}
+              {% endblock %}
+            </div>
+          </main>
+        </div>
+      </section>
+    {% endblock %}
+    {% include "_footer.html" %}
+  </div>
+  {% block blog-footer %}
+    <div class="fixed-toolbar{% if 'mc' in request.GET %} on{% else %} hide{% endif %}">
+      <strong>Almost finished...</strong>  We need to confirm your email address.
+    </div>
+  {% endblock %}
+{% endblock %}
+{% block extra_content %}{% endblock %}
+{% block extra_js %}
+  <script>
+    $(function() {
+      if (location.search.indexOf('mc=') >= 0) {
+        Cookies.set('mc_subscribed', true);
+      }
+    });
+  </script>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load highlight %}
+{% block body_css_class %} class="inner"{% endblock %}
+{% block content %}
+  <section class="top-section smaller" style="background-color: #335966;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Search Results for: {{ query }}</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="search-section" role="main">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+            {% if query %}
+              {% for result in page.object_list %}
+                  <h2 class="search-title entry-title">
+                    <a href="{{ result.object.get_absolute_url }}" rel="bookmark" title="{{ result.object.title }}" style="line-height: 38px;">{{ result.object.title }}</a>
+                  </h2>
+                  <p class="author">
+                    <span>{{ result.date }}</span>
+                  </p>
+                  <div class="entry-content">
+                    <p>{% if result.text %}{% highlight result.text with query max_length 200 %}{% endif %}</p>
+                  </div>
+                  <BR>
+                {% empty %}
+                  <p>No results found.</p>
+              {% endfor %}
+              {% if page.has_previous or page.has_next %}
+                <div>
+                  {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous{% if page.has_previous %}</a>{% endif %}
+                    |
+                  {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next &raquo;{% if page.has_next %}</a>{% endif %}
+                </div>
+              {% endif %}
+            {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+{% block footer_js %}
+  {% include "_footer.html" %}
+{% endblock %}

@@ -1,0 +1,6 @@
+{% load widgy_tags %}
+<div class="{{ self.get_css_class }}">
+  {% for child in self.get_children %}
+    {% render child %}
+  {% endfor %}
+</div>

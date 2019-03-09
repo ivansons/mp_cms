@@ -1,0 +1,25 @@
+{% load staticfiles %}
+{% load widgy_tags %}
+<div class="w-section testimonial-module" style="background-image: url('{{ self.background_image.url }}');">
+  <div class="vertical-element">
+    <div data-animation="outin" data-duration="500" data-infinite="1" data-easing="ease-out-quad" class="w-slider social-proof">
+      <div class="w-slider-mask">
+        {%  for child in self.get_children %}
+          {% if child.title %}
+            {% render child %}
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="w-slider-arrow-left testimonial-arrow">
+        <div class="w-icon-slider-left"></div>
+      </div>
+      <div class="w-slider-arrow-right testimonial-arrow">
+        <div class="w-icon-slider-right"></div>
+      </div>
+      <div class="w-slider-nav w-round slide-nav"></div>
+    </div>
+    <div class="w-container social-proof-names">
+      {% render self.get_children.0 %}
+    </div>
+  </div>
+</div>

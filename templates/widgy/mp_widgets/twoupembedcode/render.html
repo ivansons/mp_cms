@@ -1,0 +1,138 @@
+{% load staticfiles %}
+{% load widgy_tags %}
+<script type="text/javascript">
+  function defer(load_fancybox) {
+    if (window.jQuery)
+        load_fancybox();
+    else
+        setTimeout(function() { defer(load_fancybox) }, 50);
+  }
+  function load_fancybox() {
+    var script_elem = document.getElementById("fancy_box_script");
+    if (script_elem === null){
+      var js = document.createElement("script");
+      js.type = "text/javascript";
+      js.src = "{% static "js/jquery.fancybox.pack.js" %}";
+      js.id = "fancy_box_script";
+      var css = document.createElement("link");
+      css.type = "text/css";
+      css.rel = "stylesheet";
+      css.href = "{% static "css/fancybox/jquery.fancybox.css" %}";
+      css.media = "all";
+      var body = document.getElementsByTagName("body")[0];
+      body.appendChild(js);
+      body.appendChild(css);
+    }
+  }
+  defer(load_fancybox);
+  $(function() {
+    $(".fancybox").fancybox({
+      "width" : 800,
+      "height" : 429,
+      "autoSize" : false,
+      "closeBtn" : true,
+      helpers : {
+        overlay: true,
+      },
+    });
+  });
+  $(function() {
+    $("body").on("click", "#left-cta-{{ self.id }}", function() {
+      $("#player").children().first().attr("src", "https://my.matterport.com/show/?m={{ self.data_model_id1 }}&play=1");
+      //window.scroll(0,1);
+      $("html, body").animate({scrollTop: "0px" }, 1000);
+    });
+    $("body").on("click", "#right-cta-{{ self.id }}", function() {
+      $("#player").children().first().attr("src", "https://my.matterport.com/show/?m={{ self.data_model_id2 }}&play=1");
+      $("html, body").animate({scrollTop: "0px" }, 1000);
+    });
+  });
+</script>
+{% with css_style=self.get_css_style %}
+  <div{% if self.css_class %} class="{{ self.css_class }}"{% endif %}{% if css_style %} style="{{ css_style }}"{% endif %}>
+  {% if self.main_title %}
+    {% if self.main_title_is_raw_html %}
+      {{ self.main_title|safe }}
+    {% else %}
+      <div class="container">
+        <h2 class="h2-headl-embedded">{{ self.main_title }}</h2>
+      </div>
+    {% endif %}
+  {% endif %}
+  {% if self.main_text %}
+    {% if self.main_text_is_raw_html %}
+      {{ self.main_text|safe }}
+    {% else %}
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h3 class="h3-headl-embedded">{{ self.main_text }}</h3>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  {% endif %}
+  <div class="options-boxes-2-up-embed-code">
+    <div class="options-box-2-up-embed-code left">
+      {% with left_block=self.get_children.0 %}
+        <img src="{{ left_block.image.url }}">
+        <div class="texti">
+          {% if left_block.get_children.0.title %}
+            <p class="ind-title">{{ left_block.get_children.0.title }}</p>
+          {% endif %}
+          {% if left_block.get_children.0.text %}
+            {% if left_block.get_children.0.text_is_raw_html %}
+              {{ left_block.get_children.0.text|safe }}
+            {% else %}
+              <p>{{ left_block.get_children.0.text }}</p>
+            {% endif %}
+          {% endif %}
+          <div class="button-holder">
+            <a href="javascript:void(0);" data-model-id="{{ self.data_model_id1 }}" data-ix="new-button-hover" class="w-inline-block new-button" id="left-cta-{{ self.id }}"><img src="{% static "images/button-left.png" %}" class="small">
+              <div class="button-center small">
+                <div class="button-text">Explore Model</div>
+              </div><img src="{% static "images/button-right.png" %}" class="small"><img src="{% static "images/button-arrow.png" %}" class="button-arrow small">
+            </a>
+            <a class="fancybox link-blue-2-up-embed-code try-it-em bsp" href="javascript:;" data-fancybox-href="#try-it-em-left-{{ self.id }}">{{ self.embed_code_text1 }}</a>
+          </div>
+        </div>
+      {% endwith %}
+    </div>
+    <div class="options-box-2-up-embed-code right">
+      {% with right_block=self.get_children.1 %}
+        <img src="{{ right_block.image.url }}">
+        <div class="texti">
+          {% if right_block.get_children.0.title %}
+            <p class="ind-title">{{ right_block.get_children.0.title }}</p>
+          {% endif %}
+          {% if right_block.get_children.0.text %}
+            {% if right_block.get_children.0.text_is_raw_html %}
+              {{ right_block.get_children.0.text|safe }}
+            {% else %}
+              <p>{{ right_block.get_children.0.text }}</p>
+            {% endif %}
+          {% endif %}
+          <div class="button-holder">
+            <a href="javascript:void(0);" data-model-id="{{ self.data_model_id2 }}" data-ix="new-button-hover" class="w-inline-block new-button" id="right-cta-{{ self.id }}"><img src="{% static "images/button-left.png" %}" class="small">
+              <div class="button-center small">
+                <div class="button-text">Explore Model</div>
+              </div><img src="{% static "images/button-right.png" %}" class="small"><img src="{% static "images/button-arrow.png" %}" class="button-arrow small">
+            </a>
+            <a class="fancybox inline link-blue-2-up-embed-code" href="javascript:;" data-fancybox-href="#try-it-em-right-{{ self.id }}">{{ self.embed_code_text2 }}</a>
+          </div>
+        </div>
+      {% endwith %}
+    </div>
+  </div>
+</div>
+{% endwith %}
+<div id="try-it-em-left-{{ self.id }}" style="display:none">
+  <p>Copy the HTML snippet below to embed the model above on your website*</p>
+  <code>&lt;iframe width=”853" height=”480" src=”https://my.matterport.com/show/?m={{ self.data_model_id1 }}” frameborder=”0′′ allow-fullscreen&gt;&lt;/iframe&gt;</code>
+  <p>*Ensure that you are pasting into the HTML or plain text editor, just as you would embed a YouTube video. You can also send the code above to your webmaster and ask them to place it on a sample page. For testing purposes, do not use for long-term publishing as we cannot guarantee that the model will remain public.</p>
+</div>
+<div id="try-it-em-right-{{ self.id }}" style="display:none">
+  <p>Copy the HTML snippet below to embed the model above on your website*</p>
+  <code>&lt;iframe width=”853" height=”480" src=”https://my.matterport.com/show/?m={{ self.data_model_id2 }}” frameborder=”0′′ allow-fullscreen&gt;&lt;/iframe&gt;</code>
+  <p>*Ensure that you are pasting into the HTML or plain text editor, just as you would embed a YouTube video. You can also send the code above to your webmaster and ask them to place it on a sample page. For testing purposes, do not use for long-term publishing as we cannot guarantee that the model will remain public.</p>
+</div>

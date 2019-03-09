@@ -1,0 +1,36 @@
+{% load staticfiles %}
+{% load pages_tags %}
+{% load startswith %}
+{% if page_branch_in_menu %}
+  {% for page in page_branch %}
+    {% if page.in_menu and page.published and page.branch_level <= 1 %}
+      {% if page.is_primary %}
+        {% if page.has_children %}
+          <li class="dropdown desktop-visible clearfix lg-visible md-visible sm-visible">
+            <a id="id-navlink-{{ page.id }}" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle">
+              {{ page.title }}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="id-navlink-{{ page.id }}">
+              <ul class="dropdown-top">
+                {% page_menu page %}
+              </ul>
+            </div>
+          </li>
+        {% else %}
+          <li class="dropdown desktop-visible clearfix lg-visible md-visible sm-visible">
+            <a id="id-navlink-{{ page.id }}" href="{{ page.get_absolute_url }}"{% if page.extension.popup %} target="_blank"{% endif %}>
+              {{ page.title }}{% if page.extension.popup %} <i class="fa fa-external-link-square icon-external-link" aria-hidden="true"></i>{% endif %}
+            </a>
+          </li>
+        {% endif %}
+      {% else %}
+        <li>
+          <a href="{{ page.get_absolute_url }}"{% if page.extension.popup %} target="_blank"{% endif %} class="sub-menu-link">
+            <div class='dropdown-element'>{{ page.title }}{% if page.extension.popup %} <i class="fa fa-external-link-square icon-external-link" aria-hidden="true"></i>{% endif %}</div>
+            <div class="subtext-dropdown">{{ page.extension.subtitle }}</div>
+          </a>
+        </li>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endif %}

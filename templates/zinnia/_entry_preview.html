@@ -1,0 +1,21 @@
+{% load html_bleach %}
+<div class="row{% if post_row_css_class %} {{ post_row_css_class }}{% endif %}">
+  <div class="col-sm-4">
+    <div{% if object.image %} style="background-image: url({{ object.image.url }}); width: 100%; padding-top: 80%; background-size: cover;"{% endif %}>
+      {% if object.category_overlay %}
+        <img class="category-overlay" src="{{ object.category_overlay.url }}">
+      {% endif %}
+    </div>
+  </div>
+  <div class="col-sm-8">
+    <a href="{{ object.get_absolute_url }}" title="{{ object.title }}">
+      <h2>{{ object.title }}</h2>
+    </a>
+    <p class="author">
+      {{ object.authors.all.0 }}
+      <span>{{ object.publication_date|date:"DATE_FORMAT" }}</span>
+    </p>
+    <p>{{ object.html_preview|bleach|safe }}</p>
+    <a href="{{ object.get_absolute_url }}" class="read-more" title="{{ object.title }}">Read More</a>
+  </div>
+</div>

@@ -1,0 +1,225 @@
+{% extends "zinnia/entry_list.html" %}
+{% load staticfiles %}
+{% load compress %}
+{% block metadata %}
+  <title>{% block meta_title %}Resources - Matterport{% endblock %}</title>
+{% endblock %}
+{% block css %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static "css/wp-avista-styles.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/wp-avista-styles-new.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/wp-avista-styles-201605.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/header-new.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/wp-slick.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "cookie_bar/cookiebar_v1.5.9.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/wp-migration-fix.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/fancybox/jquery.fancybox.css" %}">
+{% endblock %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'resource/css/normalize.css' %}">
+  <link rel="stylesheet" href="{% static 'resource/css/skeleton.css' %}">
+  <link rel="stylesheet" href="{% static 'resource/css/dropit.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'resource/css/app.css' %}">
+  <link rel="stylesheet" href="https://static.matterport.com/mp_cms/media/filer_public/65/7e/657eadaa-f34f-4e04-be0c-dfcbbe20ce20/fix_header.css">
+{% endblock %}
+{% block jqueryjs %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+{% endblock %}
+{% block blog-top %}
+{% endblock %}
+{% block blog-content %}
+  <section class="content grid">
+    <div id="resources-container">
+      <section id="hero">
+        <div class="container">
+          <a href="{% url 'resource_list' %}"><h1 class="hero-heading">Resources</h1></a>
+          <h2 class="hero-subheading">With Matterport 3D solutions, you're set up for success. Explore these helpful tools, templates, marketing tips, and training guides to get started with immersive media or level up your skills.</h2>
+        </div>
+      </section>
+      <nav id="main-nav">
+        <div class="container">
+          <ul class="dropdown">
+            <li>
+              <a class="top" href="#">Topics</a>
+              <ul id="res-topics" class="selections">
+                {% for topic in topics %}
+                  <li data-tag="{{ topic.slug }}" class="selection">{{ topic.title }}</li>
+                {% endfor %}
+                <li class="button" onclick="updateFilters()">Update Filters</li>
+              </ul>
+            </li>
+
+            <li>
+              <a class="top" href="#">Content Type</a>
+              <ul id="res-types" class="selections">
+                {% for type in types %}
+                  <li data-tag="{{ type.slug }}" class="selection{% if type.css_class %} {{ type.css_class }}{% endif %}">{{ type.title }}</li>
+                {% endfor %}
+                <li class="button" onclick="updateFilters()">Update Filters</li>
+              </ul>
+            </li>
+
+            <li>
+              <a class="top" href="#">Industries</a>
+              <ul id="res-industries" class="selections">
+                {% for industry in industries %}
+                  <li data-tag="{{ industry.slug }}" class="selection">{{ industry.title }}</li>
+                {% endfor %}
+              <li class="button" onclick="updateFilters()">Update Filters</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+    {% if featured_object_list %}
+    <section id="featured-resources" class="resources">
+      <div class="container">
+        <h2 class="section-heading animated fadeInUp">Featured Resources</h2>
+        <ul class="animated fadeInUp">
+        {% for object in featured_object_list %}
+          <li class="resource {% for type_entry in object.types.all %}{% if type_entry.css_class %}{{ type_entry.css_class }} {% endif %}{% endfor %}one-third column">
+            <a href="{{ object.get_absolute_url }}">
+              <div class="resources-img">
+                <img src="{% if object.image %}{{ object.image.url }}{% else %}https://placehold.it/300x200{% endif %}" />
+              </div>
+            </a>
+            <div class="title">{{ object.title }}</div>
+          </li>
+        {% endfor %}
+        </ul>
+      </div>
+    </section>
+    {% endif %}
+    {% if object_list %}
+    <section class="resources">
+      <div class="container">
+        <ul>
+        {% for object in object_list %}
+          <li  class="resource {% for type_entry in object.types.all %}{% if type_entry.css_class %}{{ type_entry.css_class }} {% endif %}{% endfor %}one-third column">
+            <a href="{{ object.get_absolute_url }}">
+              <div class="resources-img">
+                <img src="{% if object.image %}{{ object.image.url }}{% else %}https://placehold.it/300x200{% endif %}" />
+              </div>
+            </a>
+            <div class="title">{{ object.title }}</div>
+          </li>
+        {% endfor %}
+        </ul>
+      </div>
+    </section>
+    {% endif %}
+    </div>
+    <div style="text-align: center;">
+      {% include "_pagination.html" %}
+    </div>
+  </section>
+{% endblock %}
+{% block js %}
+  <script src="{% static "js/geoip.js" %}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="{% static "js/main.js" %}"></script>
+  <script src="{% static "js/jquery.fancybox.pack.js" %}"></script>
+  <script src="{% static "js/wpLegacy/animsition.min.js" %}"></script>
+  <script src="{% static "js/wpLegacy/jquery.textPlaceholder.js" %}"></script>
+  <script src="{% static "js/wpLegacy/wow.min.js" %}"></script>
+  <script src="{% static "js/wpLegacy/grayscale.js" %}"></script>
+  <script src="{% static "js/wpLegacy/slick.min.js" %}"></script>
+  <script src="{% static "js/wpLegacy/jquery.fancybox.pack.js" %}"></script>
+  <script src="{% static "js/wpLegacy/jquery.appear.js" %}"></script>
+  <script src="{% static "js/wpLegacy/avista-scripts.js" %}"></script>
+  <script src="{% static "js/wpLegacy/avista-scripts-new.js" %}"></script>
+  <script src="{% static "js/wpLegacy/gravityforms.min.js" %}"></script>
+  <script src="{% static "js/navigation.js" %}"></script>
+  <!--[if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
+  <script>
+      mp.geoip.set_phone_number();
+  </script>
+{% endblock %}
+{% block extra_js %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+  <script src="{% static "resource/js/url-search-params.js" %}"></script>
+  <script>
+    $(function () {
+      particlesJS.load('hero', "{% static 'resource/js/particles.json' %}");
+
+      var urlParams = new URLSearchParams(window.location.search);
+      var topics = urlParams.get('topics');
+      var types = urlParams.get('types');
+      var industries = urlParams.get('industries');
+      if (!(topics || types || industries)) {
+        $('.selection').addClass('selected');
+      } else {
+        if (topics) {
+          applySelected(topics, 'topics');
+        }
+        if (types) {
+          applySelected(types, 'types');
+        }
+        if (industries) {
+          applySelected(industries, 'industries');
+        }
+      }
+
+      $(document).on('click', function (e) {
+        if ($(e.target).closest(".selection").length === 0) {
+          $(".dropit-submenu").hide();
+        }
+      });
+    });
+
+    function applySelected(filters, name) {
+      var filterArray = filters.split(',');
+      filterArray.forEach(function (filter) {
+        $('#res-' + name + ' .selection').each(function (index, element) {
+          if (element.dataset.tag == filter) {
+            $(this).addClass('selected');
+          }
+        })
+      })
+    }
+
+    function updateFilters() {
+      var allFilters = $('.selection');
+      var selectedFilters = $('li .selected');
+      if (selectedFilters.length == 0 || allFilters.length == selectedFilters.length) {
+        window.location = [location.protocol, '//', location.host, location.pathname].join('');
+      } else {
+        var topics = [];
+        var types = [];
+        var industries = [];
+        $('#res-topics .selected').each(function (index, element) {
+          topics.push(element.dataset.tag);
+        });
+        $('#res-types .selected').each(function (index, element) {
+          types.push(element.dataset.tag);
+        });
+        $('#res-industries .selected').each(function (index, element) {
+          industries.push(element.dataset.tag);
+        });
+        var topicQuery = topics.join(',');
+        var typeQuery = types.join(',');
+        var industryQuery = industries.join(',');
+        var baseURL = [location.protocol, '//', location.host, location.pathname].join('');
+        var queryParams = {};
+        if (topicQuery) {
+          queryParams['topics'] = topicQuery
+        }
+        if (typeQuery) {
+          queryParams['types'] = typeQuery
+        }
+        if (industryQuery) {
+          queryParams['industries'] = industryQuery
+        }
+        window.location = baseURL + '?' + $.param(queryParams);
+      }
+    }
+  </script>
+  <script src="{% static 'resource/js/dropit.js' %}"></script>
+  <script src="{% static 'resource/js/app.js' %}"></script>
+{% endblock %}

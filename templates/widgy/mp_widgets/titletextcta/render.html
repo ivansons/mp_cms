@@ -1,0 +1,25 @@
+{% load staticfiles %}
+{% load widgy_tags %}
+{% if self.title %}
+  {% if self.text_is_raw_html %}
+    {{ self.title|safe }}
+  {% else %}
+    <{{ self.title_tag }}{% if self.title_color %} style="color: {{ self.title_color }};"{% endif %} class="no-flicker">
+      {{ self.title }}
+    </{{ self.title_tag }}>
+  {% endif %}
+{% endif %}
+{% if self.text %}
+  {% if self.text_is_raw_html %}
+    {{ self.text|safe }}
+  {% else %}
+    <p class="module-blurb no-flicker"{% if self.text_color %} style="color: {{ self.text_color }};"{% endif %}>
+      {{ self.text }}
+    </p>
+  {% endif %}
+{% endif %}
+{% for child in self.get_children %}
+  <div class="cta-spacing">
+    {% render child %}
+  </div>
+{% endfor %}

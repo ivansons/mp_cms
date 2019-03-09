@@ -1,0 +1,8 @@
+{% load staticfiles %}
+{% load widgy_tags %}
+<div class="image-col-1">
+  <img class="perspective-image" src="{{ self.image.url }}">
+  {% for child in self.get_children %}
+    {% render child %}
+  {% endfor %}
+</div>

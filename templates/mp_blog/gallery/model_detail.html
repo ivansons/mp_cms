@@ -1,0 +1,220 @@
+{% extends "mp_blog/gallery/base.html" %}
+{% load staticfiles %}
+{% block body_css_class %} class="single single-model inner"{% endblock %}
+{% block metadata %}
+  <title>{% block meta_title %}{{ object.title }} - Matterport{% endblock %}</title>
+  <meta name="description" content="{% block meta_description %}{{ object.excerpt }}{% endblock %}">
+  <meta name="keywords" content="{% block meta_keywords %}{% if object.tags %}{{ object.tags }}{% endif %}{% endblock %}">
+  <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+  <meta property="og:type" content="place" />
+  <meta property="og:title" content="{{ object.title }}" />
+  <meta property="og:description" content="{{ object.excerpt }}" />
+  <meta property="og:image" content="{{ object.image.url }}" />
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "MediaObject/VirtualRealityObject",
+      "name": "{{ object.title }}",
+      "contentUrl": "{{ request.build_absolute_uri }}",
+      "embedUrl": "{{ object.model_link }}&utm_source=hit-content&play=1",
+      "description": "{{ object.excerpt }}",
+      "productionCompany": {
+        "@type": "Organization",
+        "name": "{{ object.model_info.contact_name }}",
+        "url": "{{ object.creator_link }}"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Mattterport"
+      },
+      "sourceOrganization": {
+        "@type": "Organization",
+        "name": "{{ object.model_info.presented_by }}",
+        "url": "{{ object.presenter_link }}"
+      },
+      "datePublished": "{{ object.publication_date|date:"Y-m-d" }}",
+      "encodingFormat": "****ToBeDetermined****",
+      "playerType": "****ToBeDetermined****",
+      "thumbnailURL": "{{ object.image.url }}",
+      "locationCreated": {
+        "@context": "http://schema.org",
+        "@type": "Place",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "****ToBeDetermined****",
+          "longitude": "****ToBeDetermined****"
+        }
+      }
+    }
+  </script>
+{% endblock %}
+{% block extra_metadata %}
+  {% for og_tag in object.og_tags_list %}
+    {{ og_tag|safe }}
+  {% endfor %}
+{% endblock extra_metadata %}
+{% block extra_css %}
+  {{ block.super }}
+  <link rel="stylesheet" type="text/css" href="{% static "css/fancybox/jquery.fancybox.css" %}">
+  <style type="text/css">
+    #iframe_embedded {
+      max-height: auto;
+      position: relative;
+    }
+    .share-wrap {
+      padding: 0;
+    }
+    .gallery-single {
+      height: auto !important;
+    }
+  </style>
+{% endblock %}
+{% block blog-top %}{% endblock %}
+{% block blog-content %}
+  <section class="gallery-single" role="main">
+    <div class="wp3d-embed-wrap">
+      <iframe id="iframe_embedded" src="{{ object.model_link }}&utm_source=hit-content&play=1" frameborder="0" allowfullscreen allow="vr"></iframe>
+    </div>
+    <div class="container info-box-model">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="presented-by">
+            <h1>{{ object.title }}</h1>
+          </div>
+          <div id="model-contact-wrap">
+            {% if object.model_info.contact_name or object.model_info.presented_by %}
+              {% if object.model_info.contact_name == object.model_info.presented_by %}
+                <p>
+                  Created and presented by:
+                  {% if object.creator_link %}
+                    <a href="{{ object.creator_link }}" rel="nofollow">{{ object.model_info.contact_name }}</a>
+                  {% else %}
+                    <span>{{ object.model_info.contact_name }}</span>
+                  {% endif %}
+                </p>
+              {% else %}
+                <p>
+                  {% if object.model_info.contact_name %}
+                    Created by:
+                    {% if object.creator_link %}
+                      <a href="{{ object.creator_link }}" rel="nofollow">{{ object.model_info.contact_name }}</a>
+                    {% else %}
+                      <span>{{ object.model_info.contact_name }}</span>
+                    {% endif %}
+                  {% endif %}
+                  {% if object.model_info.presented_by %}
+                    Presented by:
+                    {% if object.presenter_link %}
+                      <a href="{{ object.presenter_link }}" rel="nofollow">{{ object.model_info.presented_by }}</a>
+                    {% else %}
+                      <span>{{ object.model_info.presented_by }}</span>
+                    {% endif %}
+                  {% endif %}
+                </p>
+              {% endif %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="gallery-single-after">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="share-wrap">
+            <div class="ssb-share ssb-share-3961 round" post_id="{{ object.id }}">
+              <a target="_blank" class="email" href="mailto:?subject={{ object.title }}&body=https://{{ request.get_host }}{{ object.get_absolute_url }}">
+                <span class="icon"></span><span class="count">0</span>
+              </a>
+              <a target="_blank" class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://{{ request.get_host }}{{ object.get_absolute_url }}">
+                <span class="icon"></span><span class="count">0</span>
+              </a>
+              <a target="_blank" class="twitter" href="https://twitter.com/intent/tweet?url=https://{{ request.get_host }}{{ object.get_absolute_url }}&text={{ object.title }}">
+                <span class="icon"></span>
+                <span class="count">0</span>
+              </a>
+              <a target="_blank" class="gplus" href="https://plus.google.com/share?url=https://{{ request.get_host }}{{ object.get_absolute_url }}">
+                <span class="icon"></span><span class="count">0</span>
+              </a>
+              <a target="_blank" class="linkedin" href="http://www.linkedin.com/shareArticle?mini=true&url=https://{{ request.get_host }}{{ object.get_absolute_url }}">
+                <span class="icon"></span><span class="count">0</span>
+              </a>
+              {% if object.model_embed_code %}
+                <span id="model-embed-link" class="space-embed" data-fancybox-href="#embed-code">
+                  <img src="{% static 'images/embed.png' %}" width="100px">
+                </span>
+              {% endif %}
+            </div>
+          </div>
+          
+          <div class="model-summary">
+            <p class="summary-wrap">{{ object.html_content|safe }}</p>
+            <div class="mailmunch-forms-before-post" style="display: none !important;"></div>
+            <div class="mailmunch-forms-in-post-middle" style="display: none !important;"></div>
+            <div class="mailmunch-forms-after-post" style="display: none !important;"></div>
+          </div>
+          {% if object.tags_list %}
+          <div class="tags-cloud">
+            <span>Tags:</span>&nbsp;
+            {% for single_tag in object.tags_list %}
+              <a href="{% url 'gallery_model_by_tag' single_tag %}">{{ single_tag }}</a>&nbsp;&nbsp;
+            {% endfor %}
+          </div>
+          {% endif %}
+          <h3 class="after-cont-links">
+            <a href="{% url 'gallery_model_list' %}" title="Back to gallery">Back to Gallery</a>
+            | <a href="/gallery/suggest-a-space" title="Suggest a Space" target="blank">Suggest a Space</a>
+            | <a href="/find-a-photographer" title="Find a 3D Photographer" target="blank">Find a 3D Photographer</a>
+          </h3>
+          <div class="fb-comments" data-width="100%" data-numposts="5" data-order-by="reverse_time"
+               data-href="{{ request.build_absolute_uri }}"></div>
+        </div>
+
+        <div class="col-sm-4 right-sidebar-gallery">
+          <div class="related-models-wrap">
+            {% if category %}
+              <h3 class="more-related">More from <a href="{% url 'gallery_model_list' %}#{{ category.slug }}">{{ category.title }}</a></h3>
+              {% for e in entries %}
+                <div class="row">
+                  <div class="col-md-12">
+                    <a href="{{ e.get_absolute_url }}">
+                      <img src="{{ e.image.url }}" alt="{{ e.title }}">
+                    </a>
+                  </div>
+                  <div class="col-md-12 related-row">
+                    <a href="{{ e.get_absolute_url }}">
+                      <h3 class="rel-title">{{ e.title }}</h3>
+                    </a>
+                  </div>
+                </div>
+              {% endfor %}
+            {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+  {% if object.model_embed_code %}
+    <div id="embed-code" class="embed-code-wrap" style="display:none;">
+      <h3>EMBED CODE</h3>
+      <p class="emb-big">Copy the HTML snippet below to embed the model above on your website*</p>
+      <textarea class="embed-code">
+        <iframe width="853" height="480" src="https://my.matterport.com/show/?m={{ object.sid }}&utm_source=hit-content-embed" frameborder="0" allowfullscreen allowvr></iframe>
+      </textarea>
+      <p class="emb-small">*Ensure that you are pasting into the HTML or plain text editor, just as you would embed a YouTube video. You can also send the code above to your webmaster and ask them to place it on a sample page. For testing purposes, do not use for long-term publishing as we cannot guarantee that the model will remain public.</p>
+    </div>
+  {% endif %}
+{% endblock %}
+{% block extra_js %}
+  <script src="{% static 'js/jquery.fancybox.pack.js' %}"></script>
+  <script src="{% static 'js/gallery.model.js' %}"></script>
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=179068872438117";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  {{ block.super }}
+{% endblock %}

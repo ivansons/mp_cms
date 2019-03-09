@@ -1,0 +1,72 @@
+{% extends "zinnia/entry_list.html" %}
+{% block metadata %}
+  <title>{% block meta_title %}News - Matterport{% endblock %}</title>
+{% endblock %}
+{% block blog-top %}
+  <section class="top-section smaller xstop mobile-hidden">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1></h1>
+          <div class="news-nav-lg">
+            <div class="footer-links cf">
+              <ul id="menu-news-menu" class="news-nav">
+                <li id="menu-item-5180" class="menu-item menu-item-type-post_type menu-item-object-page{% if active_link == 'In the News' %} current-menu-item current_page_item{% endif %}">
+                  <a href="{% url 'in_the_news_news_list' %}">News</a>
+                </li>
+                <li id="menu-item-5183" class="menu-item menu-item-type-post_type menu-item-object-page{% if active_link == 'Press Releases' %} current-menu-item current_page_item{% endif %}">
+                  <a href="{% url 'press_releases_news_list' %}">Matterport Press Releases</a>
+                </li>
+                <li id="menu-item-5182" class="menu-item menu-item-type-post_type menu-item-object-page{% if active_link == 'Matterport Media Kit' %} current-menu-item current_page_item{% endif %}">
+                  <a href="/news/matterport-media-kit">Matterport Media Kit</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Navigation for mobile browser -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="dropdown" id="news-nav-sm">
+          <a id="dLabel" data-target="#" href="{{ absolute_path }}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            {{ mobile_navigation_header }}<span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dLabel">
+            <div class="footer-links cf">
+              <ul id="menu-news-menu-1" class="news-nav">
+                <li><a href="{% url 'in_the_news_news_list' %}">News</a></li>
+                <li><a href="{% url 'press_releases_news_list' %}">Matterport Press Releases</a></li>
+                <li><a href="/news/matterport-media-kit/">Matterport Media Kit</a></li>
+              </ul>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div><!-- End navigation for mobile browser -->
+{% endblock %}
+{% block blog-content %}
+  <section class="news">
+    <div class="container">
+      <header class="header-section">
+      </header>
+      <ul class="news-list">
+        {% for object in object_list %}
+          {% if forloop.counter|divisibleby:2 %}{% else %}
+            <li>
+          {% endif %}
+          {% include "mp_blog/news/_entry_preview.html" with post_row_css_class="rest-post" %}
+          {% if forloop.counter|divisibleby:2 %}
+            </li>
+          {% endif %}
+        {% endfor %}
+        {% if object_list.count|divisibleby:2 %}{% else %}</li>{% endif %}
+      </ul>
+    </div>
+    {% include "_pagination.html" %}
+  </section>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% load i18n %}
+<ul>
+  {% for category in categories %}
+    <li class="cat-item cat-item-{{ category.id }}">
+      <a href="{{ category.get_absolute_url }}">{{ category }}</a>
+    </li>
+  {% empty %}
+    <li>
+      {% trans "No categories yet." %}
+    </li>
+  {% endfor %}
+</ul>

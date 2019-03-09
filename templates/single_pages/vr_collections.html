@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block meta_title %}Create Virtual Reality Content Galleries - Matterport{% endblock %}
+{% block meta_description %}Your 3D environments in virtual reality. Create collections of your Matterport VR Spaces and share them with a single URL or QR code.{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static "vr-collections/css/main.css" %}">
+{% endblock %}
+{% block extra_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autosize.js/3.0.17/autosize.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.18.1/URI.min.js"></script>
+<script src="{% static "vr-collections/js/jquery-qrcode-0.14.0.min.js" %}"></script>
+<script src="{% static "vr-collections/js/main.js" %}"></script>
+{% endblock %}
+{% block content %}
+  <div class="content grid" style="background: #fff url({% static "vr-collections/images/bg.jpeg" %}) no-repeat center center / cover;">
+    <div class="container">
+      <div class="row">
+        <div class="paper col-md-8 col-md-offset-2">
+          <h1>Dynamic VR Collections Builder</h1>
+          <p>Matterport users can now create custom playlist of VR Spaces, which they can share through a single link.</p>
+          <p>Fill out the form below to create your own dynamic VR playlist.</p>
+          <div class="row">
+            <div class="col-md-11 col-md-offset-1">
+              <form onsubmit="return false;">
+                <div class="form-group">
+                  <label for="id_sids">Choose your VR spaces (required)</label>
+                  <p class="form-text">Include the URLs of up to 70 Spaces, each on a new line. URLs should begin with "https://my.matterport.com/..."</p>
+                  <textarea id="id_sids" placeholder="Space URL*" rows="1"></textarea>
+                  <ul class="error-messages"></ul>
+                </div>
+                <div class="form-group">
+                  <label for="id_title">Title your playlist (optional)</label>
+                  <p class="form-text">This will be displayed on the Matterport VR app home menu. We recommend 35 characters or fewer.</p>
+                  <input id="id_title" placeholder="Title (35 char)" type="text" maxlength="35">
+                </div>
+                <div class="form-group">
+                  <label for="id_description">Provide a description (optional)</label>
+                  <p class="form-text">The description is displayed when the playlist is selected from the home screen.</p>
+                  <textarea id="id_description" placeholder="Brief Description (144 char)" rows="1" maxlength="140"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="id_starting-space">Select starting space (optional)</label>
+                  <p class="form-text">Provide the URL of the Space you would like to launch first when the playlist is selected.</p>
+                  <input id="id_starting-space" placeholder="Space URL" type="text">
+                  <ul class="error-messages"></ul>
+                </div>
+                <div class="form-group">
+                  <label for="id_ret">Return URL (optional)</label>
+                  <p class="form-text">Provide the URL that should be invoked when you exit the Matterport VR app.</p>
+                  <input id="id_ret" placeholder="Return URL" type="text">
+                  <ul class="error-messages"></ul>
+                </div>
+                <div class="form-actions">
+                  <button id="id_btn_generate" class="btn btn-blue invalid">Generate URL</button>
+                </div>
+              </form>
+              <div id="id_result" class="result">
+                <p></p>
+              </div>
+            </div>
+            <div id="id_qrcode" class="t-center hidden">
+              <div></div>
+              <div>
+                <a id="id_btn_download" class="btn btn-blue" download>Download</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="banner">
+    <div class="container">
+      <h2>Don't have a Pro 3D Camera?</h2>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <p>Buy a Pro 3D Camera and start turning real-world places into interactive 3D experiences for web and virtual reality.</p>
+        </div>
+      </div>
+      <div class="btns">
+        <a class="btn btn-blue" href="https://buy.matterport.com">BUY NOW</a>
+        <a class="btn btn-yellow" href="/find-a-photographer/">FIND A PHOTOGRAPHER</a>
+      </div>
+    </div>
+  </div>
+  {% include "_footer.html" %}
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends widgy.owner.base_template|default:"layout_base.html" %}
+{% load staticfiles %}
+{% load widgy_tags %}
+{% block css %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/header-microsite.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/wp-avista-styles.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/wp-avista-styles-new.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/wp-avista-styles-201605.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/wp-slick.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "cookie_bar/cookiebar_v1.5.9.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/wp-migration-fix.css" %}">
+  {% for stylesheet in self.stylesheets %}
+  <link rel="stylesheet" type="text/css" href="{{ stylesheet }}">
+  {% endfor %}
+{% endblock %}
+{% block jqueryjs %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+{% endblock %}
+{% block body_css_class %}{% if self.body_css_class %} class="{{ self.body_css_class }}"{% else %}{{ block.super }}{% endif %}{% endblock %}
+{% block navigation %}{% endblock %}
+{% block content %}
+<section class="content grid">
+  {% for child in self.get_children %}
+    {% render child %}
+  {% endfor %}
+  {% include "_footer.html" %}
+</section>
+{% endblock %}
+{% block js %}
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+  <script src="{% static "js/main.js" %}"></script>
+  <script src="{% static "js/wpLegacy/jquery.fancybox.pack.js" %}"></script>
+  <script src="{% static "js/wpLegacy/animsition.min.js" %}"></script>
+  <script src="{% static "js/wpLegacy/grayscale.js" %}"></script>
+  <script src="{% static "js/wpLegacy/jquery.appear.js" %}"></script>
+  <script src="{% static "js/wpLegacy/slick.min.js" %}"></script>
+  <script src="{% static "js/wpLegacy/jquery.textPlaceholder.js" %}"></script>
+  <script src="{% static "js/wpLegacy/wow.min.js" %}"></script>
+  <script src="{% static "js/wpLegacy/avista-scripts.js" %}"></script>
+  <script src="{% static "js/wpLegacy/avista-scripts-new.js" %}"></script>
+  <script src="{% static "js/wpLegacy/gravityforms.min.js" %}"></script>
+  <!--[if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
+  {% for javascript_file in self.javascript_files %}
+    <script src="{{ javascript_file }}"></script>
+  {% endfor %}
+{% endblock %}

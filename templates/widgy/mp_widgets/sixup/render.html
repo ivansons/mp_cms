@@ -1,0 +1,36 @@
+{% load staticfiles %}
+{% load widgy_tags %}
+{% with css_style=self.get_css_style %}
+  <div{% if self.css_class %} class="{{ self.css_class }}"{% endif %}{% if css_style %} style="{{ css_style }}"{% endif %}>
+    <div class="w-section">
+      <div class="w-container module-intro-container">
+        {% if self.main_title and not self.main_title_is_raw_html %}
+          <{{ self.main_title_tag }}{% if self.main_title_color %} style="color: {{ self.main_title_color }};"{% endif %}>{{ self.main_title }}</{{ self.main_title_tag }}>
+        {% else %}
+          {{ self.main_title|default:""|safe }}
+        {% endif %}
+        {% if self.main_text %}
+          {% if self.main_text_is_raw_html %}
+            {{ self.main_text|safe }}
+          {% else %}
+            <p class="module-intro"{% if self.main_text_color %} style="color: {{ self.main_text_color }};"{% endif %}>{{ self.main_text }}</p>
+          {% endif %}
+        {% endif %}
+      </div>
+      <div class="w-row">
+        {% for child in self.get_children|slice:":3" %}
+          <div class="w-col w-col-4 column">
+            {% render child %}
+          </div>
+        {% endfor %}
+      </div>
+      <div class="w-row">
+        {% for child in self.get_children|slice:"3:" %}
+          <div class="w-col w-col-4 column">
+            {% render child %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endwith %}

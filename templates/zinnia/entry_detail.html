@@ -1,0 +1,107 @@
+{% extends "zinnia/base.html" %}
+{% load staticfiles %}
+{% block extra_css %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/ssb-style.css' %}" id="ssb-css-css" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/fancybox/jquery.fancybox.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/popup-widget.css' %}" />
+  {{ block.super }}
+{% endblock %}
+{% block metadata %}
+  <title>{% block meta_title %}{{ object.title }} - Matterport{% endblock %}</title>
+  <meta name="description" content="{% block meta_description %}{{ object.excerpt|safe }}{% endblock %}">
+  <meta name="keywords" content="{% block meta_keywords %}{% if object.tags %}{{ object.tags }}{% endif %}{% endblock %}">
+{% endblock %}
+{% block body_css_class %} class="single single-post inner"{% endblock %}
+{% block blog-top %}
+  <section class="top-section smaller" style="background-image:url('{% static 'images/faceted-blue-bg.png' %}');">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>{{ object.title }}</h1>
+          <span class="by"></span>
+          <span class="entry-author author" itemprop="author" itemscope="" itemptype="http://schema.org/Person">
+            {% if object.display_author %}
+              {{ object.display_author }}
+            {% else %}
+              {% for author in object.authors.all %}
+                {{ author }}&nbsp;
+              {% endfor %}
+            {% endif %}
+          </span>&nbsp;
+          <time class="updated entry-time" datetime="2015-12-09" itemprop="datePublished">
+            {{ object.publication_date|date:"DATE_FORMAT" }}
+          </time>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+{% block blog-main %}
+  <div class="col-sm-8">
+    <div class="m-all t-2of3 d-5of7 cf" role="main" itemscope="" itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+      <article id="post-{{ object.id }}" class="cf post-{{ object.id }} post type-post status-publish format-standard has-post-thumbnail hentry category-places" role="article" itemscope="" itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
+        <section class="entry-content cf" itemprop="articleBody">
+          <div class="ssb-share ssb-share-3936 round" post_id="{{ object.id }}">
+            <a target="_blank" class="email" href="mailto:?subject={{ object.title }}&amp;body=http://{{ request.get_host }}{{ object.get_absolute_url }}">
+              <span class="icon"></span>
+              <span class="count">1</span>
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://{{ request.get_host }}{{ object.get_absolute_url }}" onclick="__gaTracker('send', 'event', 'outbound-article', 'https://www.facebook.com/sharer/sharer.php?u=http://{{ request.get_host }}{{ object.get_absolute_url }}', '0');" target="_blank" class="fb">
+              <span class="icon"></span>
+              <span class="count">0</span>
+            </a>
+            <a href="https://twitter.com/intent/tweet?url=http://{{ request.get_host }}{{ object.get_absolute_url }}&amp;text={{ object.title }}" onclick="__gaTracker('send', 'event', 'outbound-article', 'https://twitter.com/intent/tweet?url=http://{{ request.get_host }}{{ object.get_absolute_url }}&amp;text={{ object.title }}', '0');" target="_blank" class="twitter">
+              <span class="icon"></span>
+              <span class="count">0</span>
+            </a>
+            <a href="https://plus.google.com/share?url=http://{{ request.get_host }}{{ object.get_absolute_url }}" onclick="__gaTracker('send', 'event', 'outbound-article', 'https://plus.google.com/share?url=http://{{ request.get_host }}{{ object.get_absolute_url }}', '0');" target="_blank" class="gplus">
+              <span class="icon"></span>
+              <span class="count">0</span>
+            </a>
+          </div>
+          <div class="mailmunch-forms-before-post" style="display: none !important;"></div>
+          <div>
+            {{ object.html_content|safe }}
+          </div>
+          <div>
+          {% if object.tags_list %}
+            Topics:&nbsp;
+            {% for single_tag in object.tags_list %}
+              <a href="{% url 'zinnia:tag_detail' single_tag %}">{{ single_tag }}</a>&nbsp;
+            {% endfor %}
+          {% endif %}
+          </div>
+          <div class="mailmunch-forms-after-post" style="display: none !important;"></div>
+        </section>
+      </article>
+    </div>
+  </div>
+{% endblock %}
+{% block blog-footer %}
+  {{ block.super }}
+  <span class="popup-subscription-form" data-fancybox-href="#popup-subscription-form"></span>
+  <div id="popup-subscription-form" class="popup-widget" style="display:none;">
+    <div class="popup-header">
+      <h2>Be the first to visit new 3D Spaces!</h2>
+      <p>Subscribe to get updates about Matterport, special offers, and be the first to discover exciting new places with Matterport!</p>
+    </div>
+    <div class="popup-body">
+      <!-- Begin MailChimp Signup Form -->
+      <div id="mc_popup_signup">
+        <form action="//matterport.us2.list-manage.com/subscribe/post?u=542a7ea2cf928b32b2e2d1ae3&amp;id=b5b08855c7" method="post" id="mc-popup-subscribe-form" name="mc-embedded-subscribe-form" class="validate" novalidate>
+          <div id="mc_popup_signup_scroll">
+            <input type="email" value="" name="EMAIL" class="email" id="mcp-EMAIL" placeholder="Email" required>
+            <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+            <div style="position: absolute; left: -5000px;" aria-hidden="true">
+              <input type="text" name="b_542a7ea2cf928b32b2e2d1ae3_b5b08855c7" tabindex="-1" value="">
+            </div>
+            <div class="mc_button_container">
+              <input type="submit" value="Subscribe!" name="subscribe" id="mc-popup-subscribe" class="button">
+            </div>
+          </div>
+        </form>
+      </div>
+      <!--End mc_embed_signup-->
+    </div>
+  </div>
+{% endblock %}

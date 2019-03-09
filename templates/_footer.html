@@ -1,0 +1,102 @@
+{% load staticfiles %}
+{% load region_tags %}
+<footer id="footer-new" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
+  <div class="container style-2">
+    <div class="row">
+      <div class="col">
+        <h4>CONTACT US</h4>
+        <ul id="menu-footer-contact-us" class="footer-nav cf list-footer">
+          <li><a id="id-footer-contact" href="/contact-us/">Sales</a></li>
+          <li><a id="id-footer-demo" href="https://try.matterport.com/get-a-demo/">Schedule a Demo</a></li>
+          <li><a id="id-footer-support" href="https://support.matterport.com">Support</a></li>
+          <li><a id="id-footer-resellers" href="/matterport-local-resellers/">Find a Local Reseller</a></li>
+        </ul>
+        <ul class="social">
+          <li><a id="id-footer-facebook" href="https://business.facebook.com/Matterport/" target="_blank"><img src="{% static "images/ico-facebook-001.svg" %}" alt="Matterport - Facebook" width="24" height="24"></a></li>
+          <li><a id="id-footer-twitter" href="https://twitter.com/Matterport" target="_blank"><img src="{% static "images/ico-twitter-001.svg" %}" alt="Matterport - Twitter" width="24" height="20"></a></li>
+          <li><a id="id-footer-linkedin" href="https://www.linkedin.com/company/matterport" target="_blank"><img src="{% static "images/ico-linkedin-001.svg" %}" alt="Matterport - LinkedIn" width="24" height="24"></a></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h4>LEARN MORE</h4>
+        <ul class="footer-nav cf list-footer">
+          <li><a id="id-footer-faq" href="/frequently-asked-questions/">Frequently Asked Questions</a></li>
+          <li><a id="id-footer-customers" href="/customers/">Customers</a></li>
+          <li><a id="id-footer-pricing" href="https://buy.matterport.com">Pricing and Plans</a></li>
+          <li><a id="id-footer-int-orders" href="/order-international/">International Orders</a></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h4>SUPPORT</h4>
+        <ul class="footer-nav cf list-footer">
+          <li><a id="id-footer-community" href="https://matterport.com/community/">Matterport User Group &amp; Community</a></li>
+          <li><a id="id-footer-help" href="https://support.matterport.com">Help Center</a></li>
+          <li><a id="id-footer-resources" href="/customer-marketing-kit/">Customer Resources</a></li>
+          <li><a id="id-footer-blog" href="/blog/">Blog</a></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h4>ACCOUNT</h4>
+        <ul class="footer-nav cf list-footer">
+          <li><a id="id-footer-login" href="https://my.matterport.com">Cloud Login</a></li>
+          <li><a id="id-footer-billing" href="https://buy.matterport.com/user/login">Manage Billing</a></li>
+          <li><a id="id-footer-msp" href="/msp-member/">Service Partner Portal</a></li>
+          <li><a id="id-footer-be-msp" href="/become-an-msp/">Become a Service Partner</a></li>
+        </ul>
+      </div>
+    </div><!-- / row -->
+    <div class="row">
+      <div class="col">
+        <h4>FEATURES</h4>
+        <ul class="footer-nav cf list-footer">
+          <li><a id="id-footer-3d-space" href="/how-it-works/#spaces">3D Spaces</a></li>
+          <li><a id="id-footer-vr" href="/virtual-reality/">Virtual Reality</a></li>
+          <li><a id="id-footer-mattertag" href="/mattertag-posts/">Mattertag Content</a></li>
+          <li><a id="id-footer-floor-plan" href="/schematic-floor-plan/">Schematic Floor Plans</a></li>
+          <li><a id="id-footer-3d-capture" href="/3d-scanning-construction-engineering/">3D Reality Capture</a></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h4>SERVICE PARTNER NETWORK</h4>
+        <p>Our trusted 3D Pros are in every US State and over 80 countries around the world.</p>
+        <ul class="footer-nav cf list-footer">
+          <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
+            <a id="id-footer-fap" href="/find-a-photographer/">Get a 3D Scan Today!</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col">
+        <h4>ABOUT MATTERPORT</h4>
+        <ul class="footer-nav cf list-footer">
+          <li><a id="id-footer-company" href="/about/">Company</a></li>
+          <li><a id="id-footer-press" href="/news/">Press</a></li>
+          <li><a id="id-footer-media-kit" href="/news/matterport-media-kit/">Media Kit</a></li>
+          <li><a id="id-footer-careers" href="/careers/">Careers</a></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h4>USES</h4>
+        <ul class="footer-nav cf list-footer">
+          <li><a id="id-footer-real-estate" href="/3d-marketing-for-real-estate/">Residential Real Estate Marketing</a></li>
+          <li><a id="id-footer-rental" href="/industries/rental-communities/">Rental Community Marketing</a></li>
+          <li><a id="id-footer-entertainment" href="/industries/news-and-entertainment/">Immersive Content Creation for News</a></li>
+          <li><a id="id-footer-travel" href="/industries/travel-hospitality-events/">Travel, Hospitality &amp; Events</a></li>
+          <li><a id="id-footer-construction" href="/industries/architecture-engineering-construction/">Quick, Simple Construction Documentation</a></li>
+          <li><a id="id-footer-vr-content" href="/virtual-reality/">Content Creation for Virtual Reality</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  {% region_in_footer %}
+  <div class="bottom">
+    <div class="container">
+      <p>&copy; {% now "Y" %} Matterport, Inc. All rights reserved.</p><br />
+      <p>Matterport, 3D Showcase, Mattertag, and Virtual Walkthrough are registered trademarks of Matterport, Inc.</p><br />
+      <p>Terms, conditions, features, support, pricing and service options subject to change without notice.</p><br />
+      <ul>
+        <li><a id="id-footer-terms" href="/terms-of-use-2/">Terms of Use</a></li>
+        <li><a id="id-footer-privacy" href="/legal/privacy-policy/">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>

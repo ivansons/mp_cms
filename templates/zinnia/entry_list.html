@@ -1,0 +1,22 @@
+{% extends "zinnia/base.html" %}
+{% load blog_entries %}
+{% load zinnia %}
+{% block metadata %}
+  <title>{% block meta_title %}Blog - Matterport{% endblock %}</title>
+{% endblock %}
+{% block blog-featured-post %}
+  {% if not page_obj or page_obj.number == 1 %}
+    {% get_featured_entries 3 "zinnia/_entry_preview_featured.html" %}
+  {% endif %}
+{% endblock %}
+{% block blog-main %}
+  {% get_top_featured_entries 3 as top_3_featured_entries %}
+  <div class="col-md-8">
+    {% for object in object_list %}
+      {% if object not in top_3_featured_entries %}
+        {% include "zinnia/_entry_preview.html" with post_row_css_class="rest-post" %}
+      {% endif %}
+    {% endfor %}
+    {% include "_pagination.html" %}
+  </div>
+{% endblock %}

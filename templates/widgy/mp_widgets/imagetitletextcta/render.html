@@ -1,0 +1,11 @@
+{% with purpose=self.parent_cls_name %}
+  {% if purpose == "TwoUpOverlay" or purpose == "ThreeUpOverlay" %}
+    {% include "widgy/mp_widgets/imagetitletextcta/_as_overlay.html" %}
+  {% elif purpose == "ThreeUpIcon" %}
+    {% include "widgy/mp_widgets/imagetitletextcta/_as_icon.html" %}
+  {% elif purpose == "ThreeUpLongText" %}
+    {% include "widgy/mp_widgets/imagetitletextcta/_as_longtext.html" %}
+  {% else %}
+    {% include "widgy/mp_widgets/imagetitletextcta/_as_image.html" %}
+  {% endif %}
+{% endwith %}

@@ -1,0 +1,29 @@
+<div class="container media-kit-box msp-webinar-event">
+  <div class="row">
+    <div class="col-xs-4 col-sm-3 col-md-2">
+      <img src="https://static.matterport.com/mp_cms/media/filer_public/7c/f5/7cf5ce2d-5bf4-4b90-855f-2490e0ae0975/member-events-icon.png" alt="August Webinar">
+    </div>
+    <div class="col-xs-8 col-sm-9 col-md-10 webinar-box">
+      <div class="msp-webinar-event-main-title">
+        <h2 style="font-weight: 600; font-size: 21px; text-align: left; line-height: 25px;">{{ self.main_title }}</h2>
+      </div>
+      {% if self.main_text %}
+        <div class="msp-webinar-event-main-text">
+          <h3 style="text-align:left; text-transform: uppercase; font-size: 16px; font-weight: 600; margin-bottom: 20px; margin-top: 20px;">{{ self.main_text }}</h3>
+        </div>
+      {% endif %}
+      {% if self.sub_text %}
+        <div class="msp-webinar-event-sub-text">
+          <p>{{ self.sub_text|safe }}</p>
+        </div>
+      {% endif %}
+      {% if self.register_text and self.register_link %}
+        <a href="{{ self.register_link }}" title="Register Now" class="link-blue">
+          <div style="font-weight: 800">
+            {{ self.register_text }}
+          </div>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</div>

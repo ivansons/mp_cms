@@ -1,0 +1,355 @@
+{% extends "mp_blog/matterapps/base.html" %}
+{% load staticfiles i18n %}
+{% block metadata %}
+  <title>{% block meta_title %}3rd Party Offerings - Matterport{% endblock %}</title>
+  <meta name="description" content="Experience exotic and interesting places in the Matterport Spaces Gallery, our public collection of virtual experiences created from real-world locations."/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css">
+{% endblock %}
+{% block blog-top %}
+<style>
+
+    .swiper-container {
+      width: auto;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      background-size: cover;
+    }
+
+    .swiper-slide {
+        background-position: center;
+        background-size: all;
+        width: 100%;
+    }
+
+    .swiper-slide:nth-child(2n) {
+      width: 40%;
+    }
+    .swiper-slide:nth-child(3n) {
+      width: 20%;
+    }
+
+  .row-col-4 {
+    -webkit-column-width: 22em;
+    -moz-column-width: 22em;
+    column-width: 22em;
+    -moz-column-gap: 1em;
+    -webkit-column-gap: 1em;
+    column-gap: 1em;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: inline-flex !important;
+    max-width: 380px;
+  }
+
+  .item {
+    display: inline-block;
+    padding: .25rem;
+    width:  100%;
+  }
+
+  .well-done {
+    position: relative;
+    display: inline-block;
+  }
+
+  @media screen and (max-width: 989px) {
+    .sm-hidden {
+      display: none !important;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .xs-hidden {
+      display: none !important;
+    }
+  }
+
+</style>
+<div class="w-container">
+  <div class="w-section w-clearfix">
+    <div class="gallery-header">
+      <h1 class="text-center title_list">3rd Party Offerings</h1>
+    </div>
+  </div>
+</div>
+
+<!-- display other screens -->
+
+
+<!-- title -->
+  <!-- end title -->
+  <!-- <div class="row"> <h1>&nbsp;</h1></div> -->
+  <!-- text and right box -->
+<div class="container">
+  <!-- text left -->
+  <div class="clearfix visible-lg visible-md col-lg-8 col-md-7">
+    <p class="intro">Are you a Matterport customer or a Matterport Service Partner (MSP) who wants a unique 3D Showcase experience, additional features from your 3D Spaces, or professional marketing tools to grow your client base?</p><br>
+    <p class="intro">We've compiled a list of vendors, from developer applications that can work with the Matterport Spaces you've already created to marketing services and merchandise that can help you win more business:</p>
+  </div>
+  <!-- end text left -->
+  <!-- box text right -->
+  <div class="clearfix visible-lg visible-md col-lg-4 col-md-5 text-center help_center_panel">
+    <div class="row"> &nbsp;</div>
+    <p class="text-center" style="color: #f8f8f8">Check out the <a href="https://support.matterport.com" id="help"><u>Help Center</u></a> too. We may <br>
+    have already implemented what you <br>
+    want as a first party Matterport feature.</p>
+    <div class="row"> &nbsp;</div>
+  </div>
+  <!-- end box text right -->
+  
+  <div class="clearfix visible-lg visible-md col-lg-4 col-md-4"><h1>&nbsp;</h1></div>
+  <div class="clearfix visible-sm"> <p>&nbsp;</p></div>
+
+</div>
+<!-- end text and right box -->
+
+{% endblock %}
+{% block blog-content %}
+<!-- container -->
+<div class="container">
+      {% for object in object_list %}
+
+        {% if object.status %}
+        <!-- Large screens-->
+        <div class="clearfix visible-lg visible-md sm-hidden xs-hidden row-col-4">
+          <div class="item">
+            <div class="well-done">
+              {% if object.category == 1 %}
+                <div class="colored_label">
+                  <h5 id="app">App</h5>
+                </div>
+                <div class="panel panel-default">
+              {% endif %}
+              {% if object.category == 2 %}
+                <div class="colored_label">
+                  <h5 id="service">Service</h5>
+                </div>
+                <div class="panel panel-default">
+              {% endif %}
+              {% if object.category == 3 %}
+                <div class="colored_label">
+                  <h5 id="merchandise">Merchandise</h5>
+                </div>
+                <div class="panel panel-default">
+              {% endif %}
+              <!-- panel width photo, title, text and button pantallas grandes-->
+              <div class="panel-body">
+                {% if object.image %}<center><img src="{{ object.image.url }}" class="img-responsive" alt="{{ object.image.help_text }}" style="width: 100%; height:auto; max-width: auto; max-height: auto"></center>{% endif %}
+                <h2 class='tx app_title'>{{ object.title }}</h2>
+                <p class='app_body'>{{ object.description|safe|truncatechars:120 }}</p>
+                <div class="row">&nbsp;</div>
+                <p><a href="{% url 'matterapps_detail' object.slug %}" class='btn learn-more'>{% trans "Learn more " %}<i class="fa fa-angle-double-right"></i></a></p>
+              </div>
+              <!--end panel width photo, title, text and button pantallas grandes-->
+              <!-- profile photo, author and address-->
+              <div class="clearfix visible-lg visible-md col-lg-12 col-md-12 panel-footer">
+                <!-- profile photo -->
+                <div class="clearfix visible-lg visible-md col-lg-5 col-md-5 text-right">
+                  <br>
+                  {% if object.author_image %}
+                    <img src="{{ object.author_image.url }}" id='author_img' class="img-responsive img-circle" alt="{{ object.author_image.help_text }}" style="float: right;">
+                  {% else %}
+                    <img src="{% static 'images/user-icon-27998.png' %}" class="img-responsive img-circle" alt="User image" id='author_img' style="width: auto; height: 60px; max-height: auto; float: right;">
+                  {% endif %}
+                </div>
+                <!--end profile photo -->
+                <!-- Author data -->
+                <div class="clearfix visible-lg visible-md col-lg-7 col-md-7 text-left">
+                  &nbsp;<p class="author">{{ object.author }}</p>
+                  <a href="{{ object.company_url }}" class="company" rel="nofollow">{{ object.company_name }}</a>
+                  <div class="row">&nbsp;</div>
+                </div>
+                <!-- end author data -->
+              </div>
+              <!-- profile photo, author and address-->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end Large screens -->
+
+      <!-- Medium screens-->
+      <div class="clearfix visible-sm col-sm-6">
+        <div class="panel panel-default">
+          <!-- panel width photo, title, text and button pantallas grandes-->
+          <div class="panel-body">
+            {% if object.image %}<center><img src="{{ object.image.url }}" class="img-responsive" alt="{{ object.image.help_text }}" style="width: 100%; height: auto; max-width: auto; max-height: auto"></center>{% endif %}
+            <div class="row"> <p>&nbsp;</p></div>
+            <p class='tx app_title'><strong>{{ object.title }}</strong></p>
+            <div class="row"> <p>&nbsp;</p></div>
+            <div class="">
+              <p class='tx'>{{ object.description|safe|truncatechars:120 }}</p>
+            </div>
+            <div class="row"> <p>&nbsp;</p></div>
+            <p><a href="{% url 'matterapps_detail' object.slug %}" class='btn learn-more'>{% trans "Learn more " %}<i class="fa fa-angle-double-right"></i></a></p>
+          </div>
+          <!--end panel width photo, title, text and button pantallas grandes-->
+          <!-- profile photo, author and address-->
+          <div class="clearfix visible-sm col-sm-12 well">
+            <!-- profile photo -->
+            <div class="clearfix visible-sm col-sm-5 text-right">
+              <br>
+              {% if object.author_image %}
+                <img src="{{ object.author_image.url }}" class="img-responsive img-circle" alt="{{ object.author_image.help_text }}" id="author_img" style="float: right;">
+              {% else %}
+                <img src="{% static 'images/user-icon-27998.png' %}" class="img-responsive img-circle" alt="User image" id="author_img" style="width: auto; height: 60px; max-height: auto; float: right;">
+              {% endif %}
+            </div>
+            <!--end profile photo -->
+            <!-- Author data -->
+            <div class="clearfix visible-sm col-sm-7 text-left">
+              &nbsp;<p class="author">{{ object.author }}</p>
+              <a href="{{ object.company_url }}" class="company" rel="nofollow">{{ object.company_name }}</a>
+              <div class="row">&nbsp;</div>
+            </div>
+            <!-- end author data -->
+          </div>
+          <!-- profile photo, author and address-->
+        </div>
+      </div>
+      <!-- end Medium screens -->
+      {% endif %}
+      {% endfor %}
+
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          {% for object in object_list %}
+          {% if object.status %}
+            <div class="swiper-slide">
+              <div class="clearfix visible-xs col-xs-12">
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    {% if object.image %}<img src="{{ object.image.url }}" class="img-responsive" alt="{{ object.image.help_text }}" style="width:100%; height: auto">{% endif %}
+                    <div class="row"> <p>&nbsp;</p></div>
+                    <p class='tx app_title'><strong>{{ object.title }}</strong></p>
+                    <div class="row">&nbsp;</div>
+                    <p class='tx'>{{ object.description|safe|truncatechars:60 }}</p>
+                    <div class="row"> <p>&nbsp;</p></div>
+                    <p><a href="{% url 'matterapps_detail' object.slug %}" class='btn learn-more'>{% trans "Learn more " %}<i class="fa fa-angle-double-right"></i></a></p>
+                  </div>
+                  <div class="clearfix visible-xs col-xs-12 panel-footer">
+                    <!-- profile photo -->
+                    <div class="clearfix visible-xs col-xs-6 text-right">
+                      <br>
+                      {% if object.author_image %}
+                        <img src="{{ object.author_image.url }}" id="author_img" class="img-responsive img-circle" alt="{{ object.author_image.help_text }}" style="float: right;">
+                      {% else %}
+                        <img src="{% static 'images/user-icon-27998.png' %}" id="author_img" class="img-responsive img-circle" alt="User image" style="width: auto; height: 60px; max-height: auto; float: right;">
+                      {% endif %}
+                    </div>
+                    <!--end profile photo -->
+                    <!-- Author data -->
+                    <div class="clearfix visible-xs col-xs-6 text-left">
+                      &nbsp;<p class="author">{{ object.author }}</p>
+                      <a href="{{ object.company_url }}" class="company" rel="nofollow">{{ object.company_name }}</a>
+                    </div>
+                    <!-- end author data -->
+                  </div>
+                </div>
+              </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      
+
+      <!-- </div> -->
+    <!-- </div> -->
+</div>
+<!-- end container -->
+
+{% if paginator.num_pages > 1 %}
+<div class="clearfix visible-lg visible-md visible-sm visible-xs">  
+  <div class="row">
+    <div class="w-container single-cta">
+      {% include "_pagination.html" %}
+    </div>
+  </div>
+</div>
+{% endif %}
+  <!-- box virtual reality   -->
+  <div class="row clearfix visible-lg visible-md">
+    <div><h1>&nbsp;</h1></div>
+    <div class="clearfix visible-lg visible-md col-lg-12 col-md-12 text-center conten">
+      <div class="row"> &nbsp;</div>
+      <div class="row"> &nbsp;</div>
+      <p class="inverse"><h1 class="vr_interested">Interested in Virtual Reality?</h1>
+      <p id='vr_interested'>Are you a developer who wants to create virtual app off Matterport? Our VR SDK is <br>
+      currently in private beta to select customers. Learn more and sign up below.</p></p>
+      <div class="row"> &nbsp;</div>
+      <!-- button sing up -->
+      <div class="clearfix visible-lg visible-md col-lg-12 col-md-12 center">
+        <a href="https://matterport.com/virtual-reality/developers/" class="btn btn-warning btn-lg" id="btn" type="button" name="button"> SIGN UP</a>
+        <div class="row"> &nbsp;</div>
+        <div class="row"> &nbsp;</div>
+      </div>
+      <!--end button sing up -->
+    </div>
+  <div class="row"> &nbsp;</div>
+  </div>
+  <!--end box virtual reality   -->
+<!-- text left -->
+<div class="container clearfix visible-xs col-xs-12" style="background-color: #FFFFFF; padding: 20px;">
+    <p class="tx col-xs-12 text-justify">Are you a Matterport customer or a Matterport Service Partner (MSP) who wants a unique 3D
+      Showcase experience or addicional features from your 3D Spaces?</p>
+      <br>
+    <p class="tx col-xs-12 text-justify">We've compiled a list of approved third party applications (apps) that can work with the
+        Matterport Spaces you've already created.</p>
+</div>
+<!-- end text left -->
+
+<!-- box text right movil screen -->
+<div class="clearfix visible-xs col-xs-12 text-center conten">
+  <div class="row"> &nbsp;</div>
+  <p class="" style="color: #f8f8f8;">Check out the <a href="https://support.matterport.com" id="help"><u>Help Center</u></a> too. We may <br>
+  have already implemented what you <br>
+  want as a first party Matterport feature.</p>
+  <div class="row"> &nbsp;</div>
+</div>
+<!-- end box text right movil screen -->
+
+<section class="clearfix visible-xs col-xs-12"> &nbsp;</section>
+
+<!-- display movil screen -->
+<div class="row clearfix visible-sm"><h3>&nbsp;</h3></div>
+<div class="row clearfix visible-sm"><h3>&nbsp;</h3></div>
+<div class="visible-sm visible-xs">
+  <div class="clearfix visible-sm visible-xs col-sm-12 col-xs-12 text-center conten">
+    <div class="row"> &nbsp;</div>
+    <div class="row"> &nbsp;</div>
+    <p><h3 class="inverse">Interested in Virtual Reality? <br></h3>
+    Are you a developer who wants to create virtual app off Matterport? Our VR SDK is <br>
+    currently in private beta to select customers. Learn more and sign up below.</p>
+    <div class="row"> &nbsp;</div>
+    <!-- button sing up -->
+    <div class="clearfix visible-sm visible-xs col-sm-12 col-xs-12 center">
+      <a href="https://matterport.com/virtual-reality/developers/" class="btn btn-warning btn-lg" id="btn" type="button" name="button"> SIGN UP</a>
+      <div class="row"> &nbsp;</div>
+      <div class="row"> &nbsp;</div>
+    </div>
+    <!--end button sing up -->
+  </div>
+  <div class="row"> &nbsp;</div>
+</div>
+
+<!-- display movil screen -->
+{% endblock blog-content %}
+
+{% block extra_js %}
+  <script type="text/javascript" src="{% static 'js/library/wp3d-frontend.js' %}"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/isotope/2.2.2/isotope.pkgd.min.js"></script>
+  <script type="text/javascript" src="{% static 'js/library/slick.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/library/jquery.textPlaceholder.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.jquery.min.js"></script>
+  {{ block.super }}
+
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 1.3,
+      spaceBetween: 1
+    });
+  </script>
+{% endblock %}

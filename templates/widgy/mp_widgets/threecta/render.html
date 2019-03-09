@@ -1,0 +1,13 @@
+{% load staticfiles %}
+{% load widgy_tags %}
+<div class="w-section icon-module ctas">
+  <div class="w-container">
+    <div class="w-row">
+      {% for child in self.get_children %}
+        <div class="w-col w-col-4 column">
+          {% render child %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

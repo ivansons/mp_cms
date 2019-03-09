@@ -1,0 +1,13 @@
+.banner.mask {
+  display: block;
+}
+
+@media screen and (min-width: 767px) {
+  #menu-aec-menu {
+    display: flex;
+    justify-content: space-around;
+  }
+  #menu-aec-menu:after {
+    width: 0;
+  }
+}

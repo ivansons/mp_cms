@@ -1,0 +1,63 @@
+{% load staticfiles %}
+{% load widgy_tags %}
+{% if self.pop_up_video_iframe_tag %}
+  <script type="text/javascript">
+    $(function() {
+      $(".fancybox").fancybox({
+        "autoSize" : true,
+        "closeBtn" : true,
+        helpers : {
+          overlay: true,
+        },
+      });
+    });
+  </script>
+{% endif %}
+<div class="left-box">
+  {% with tt_cta_block=self.get_children.0 %}
+    <div class="top">
+      {% if tt_cta_block.title %}
+        <{{ tt_cta_block.title_tag }}{% if tt_cta_block.title_color %} style="color: {{ tt_cta_block.title_color }};"{% endif %}>
+        {% if tt_cta_block.text_is_raw_html %}
+          {{ tt_cta_block.title|safe }}
+        {% else %}
+          {{ tt_cta_block.title }}
+        {% endif %}
+        </{{ tt_cta_block.title_tag }}>
+      {% endif %}
+      {% if tt_cta_block.text %}
+        <p{% if tt_cta_block.text_color %} style="color: {{ tt_cta_block.text_color }};"{% endif %}>
+          {% if tt_cta_block.text_is_raw_html %}
+            {{ tt_cta_block.text|safe }}
+          {% else %}
+            {{ tt_cta_block.text }}
+          {% endif %}
+        </p>
+      {% endif %}
+    </div>
+    <div class="bottom">
+      {% if tt_cta_block.get_children.0 %}
+        {% with cta=tt_cta_block.get_children.0 %}
+          {% if self.pop_up_video_iframe_tag %}
+            <a class="fancybox" href="javascript:;" data-ix="new-button-hover" class="w-inline-block new-button" data-fancybox-href="#pop-up-video-{{ self.id }}">
+              <img src="{% static "images/button-left.png" %}" class="small">
+              <div class="button-center small">
+                <div class="button-text">{{ cta.text }}</div>
+              </div><img src="{% static "images/button-right.png" %}" class="small"><img src="{% static "images/button-arrow.png" %}" class="button-arrow small">
+            </a>
+          {% else %}
+            {% render cta %}
+          {% endif %}
+        {% endwith %}
+      {% endif %}
+    </div>
+  {% endwith %}
+</div>
+{% if self.pop_up_video_iframe_tag %}
+  <div id="pop-up-video-{{ self.id }}" class="pop-up-video" style="display:none">
+    {{ self.pop_up_video_iframe_tag|safe }}
+  </div>
+  <link rel="stylesheet" type="text/css" href="{% static "css/fancybox/jquery.fancybox.css" %}">
+  <script src="{% static "js/jquery.fancybox.pack.js" %}" id="fancy_box_script"></script>
+{% endif %}
+

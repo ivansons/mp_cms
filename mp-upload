@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# Don't install/upgrade if present.
+# Pin to 1.5.20 because 2.0.0 seems to break multiple things, including content-type.
+python -m s4cmd -h > /dev/null 2>&1 || (
+    pip install pip==9.0.3
+    pip install s4cmd==1.5.20 --allow-external s4cmd --allow-unverified s4cmd
+)
+
+APP=mp_cms
+VERSION=$(git describe --long --tags)
+# Exit early if AWS_SECRET_KEY is not set because we're not meant to be uploading if that's the case.
+if [ -z "$S3_SECRET_KEY" ]; then
+    echo 'S3_SECRET_KEY not set, not uploading to S3.'
+    echo 'This is not an error if on a fork.'
+    exit 0
+fi
+# If the directory already exists, exit.
+# You have to use get, ls always returns 0.
+echo Testing if static.matterport.com already has $VERSION
+s4cmd get s3://$STATIC_BUCKET/$APP/$VERSION/ && exit 0
+echo Uploading to static.matterport.com
+s4cmd put -r public_html/static/* s3://$STATIC_BUCKET/$APP/$VERSION/
+echo Uploading to matterport-software
+s4cmd put builds/$APP-$VERSION.tar.gz s3://$APP_BUCKET/$APP/
+# echo Uploading QA test log
+# s4cmd put -r /tmp/mp_cms/$CIRCLE_BUILD_NUM/* s3://matterport-logs/qa/mp_cms/$CIRCLE_BUILD_NUM/

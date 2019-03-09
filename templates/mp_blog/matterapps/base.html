@@ -1,0 +1,35 @@
+{% extends "zinnia/base.html" %}
+{% load staticfiles %}
+{% block extra_css %}
+  <link rel="stylesheet" id="ssb-css-css" href="{% static 'css/ssb-style.css' %}" type="text/css" media="all" />
+  <link rel="stylesheet" id="WP3D_Models-frontend-css"  href="{% static 'css/wp3d-frontend.css' %}" type="text/css" media="all" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/matterapps.css' %}">
+
+  {{ block.super }}
+{% endblock %}
+{% block blog-top %}
+  <!-- <section class="top-section smaller">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1></h1>
+          <p></p>
+        </div>
+      </div>
+    </div>
+  </section> -->
+{% endblock %}
+{% block blog-content %}
+  <section class="info-section{% if object_list %} procamera{% endif %}">
+    <div class="container">
+      <main id="main" role="main" itemscope="" itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+        <div class="row">
+          {% block blog-main %}{% endblock %}
+        </div>
+      </main>
+    </div>
+  </section>
+{% endblock %}
+<!-- <script type="text/javascript">
+    getElementById('id-navlink-buy').innerHTML(' ');
+</script> -->

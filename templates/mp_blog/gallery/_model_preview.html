@@ -1,0 +1,27 @@
+{% load staticfiles %}
+<div id="post-{{ object.id }}" class="w-col w-col-4 w-col-stack column spaces-item active model-list-wrap all-models{% if object.featured %} featured{% endif %}{% for c in object.categories.all %} {{ c.slug }}{% endfor %}">
+  <div class="gallery-block" style="background-image: url({{ object.image.url }}?width=1000);">
+    {% if object.featured %}
+      <div class="featured-icon">
+        <img height="48" src="{% static 'images/featured-icon.svg' %}">
+      </div>
+    {% endif %}
+    <div class="featured-circle"></div>
+    <a class="w-inline-block gallery-overlay" style="transition: border 0.2s ease 0s, opacity 0.2s ease-out 0s;" href="{{ object.get_absolute_url }}">
+      <div data-ix="gallery-block-{{ forloop.counter }}">
+        <div data-ix="gallery-initial" class="gallery-tab-animation-{{ forloop.counter }}" style="transform: translateX(0) translateY(0); transition: transform 200ms ease-out;">
+          <div class="gallery-tab">
+            <div class="gallery-title">
+              <h4>{{ object.title }}</h4>
+              <div class="gallery-credit">by {{ object.model_info.contact_name }} on {{ object.time_created|date:"m/d/Y" }}</div>
+            </div>
+            <div class="gallery-description">
+              <p>{{ object.excerpt }}</p>
+              <div class="uses-tab-cta">Go ›</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>

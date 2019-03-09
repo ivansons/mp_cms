@@ -1,0 +1,29 @@
+{% load staticfiles %}
+{% load widgy_tags %}
+<div{% if self.css_class %} class="{{ self.css_class }}"{% endif %}{% if self.css_style or self.background_color %} style="{% if self.css_style %}{{ self.css_style }}{% endif %}{% if self.background_color %}; background-color: {{ self.background_color }}{% endif %};"{% endif %}>
+  <div class="w-section icon-module">
+    <div class="w-container">
+      {% if self.main_title %}
+        {% if self.main_title_is_raw_html %}
+          {{ self.main_title|safe }}
+        {% else %}
+          <{{ self.main_title_tag }}{% if self.main_title_color %} style="color: {{ self.main_title_color }};"{% endif %}>{{ self.main_title }}</{{ self.main_title_tag }}>
+        {% endif %}
+      {% endif %}
+      {% if self.main_text %}
+        {% if self.main_text_is_raw_html %}
+          {{ self.main_text|safe }}
+        {% else %}
+          <p class="module-intro"{% if self.main_text_color %} style="color: {{ self.main_text_color }};"{% endif %}>{{ self.main_text }}</p>
+        {% endif %}
+      {% endif %}
+      <div class="w-row icon-row">
+        {% for child in self.get_children %}
+          <div class="w-col w-col-4">
+            {% render child %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

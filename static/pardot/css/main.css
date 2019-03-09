@@ -1,0 +1,232 @@
+/* Stylesheet for pardot forms. This file is used in pardot form layout templates. */
+body {
+  color: #002836;
+  background: inherit;
+  font: 16px/20px 'Open Sans', sans-serif;
+}
+
+.container {
+  padding: 0 15px;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+@media (min-width: 698px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 922px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1130px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+input:not([type="checkbox"]), select, textarea {
+  box-sizing: border-box;
+  border: 1px solid #004761;
+  border-radius: 4px;
+  color: #1BA6DF;
+  font-size: 14px;
+  line-height: 1.42857143;
+  margin-bottom: 10px;
+  padding: 2px 13px 1px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  vertical-align: middle;
+}
+
+input:not([type="checkbox"]), select {
+  height: 39px;
+  width: 100%;
+}
+
+input[type="checkbox"] {
+  display: inline;
+  height: 1em;
+  margin: 0;
+}
+
+.btn-default {
+  display: inline-block;
+  vertical-align: top;
+  color: #fff;
+  background: #002f40;
+  border: none;
+  font-size: 16px;
+  line-height: 22px;
+  padding: 6px 5px 8px;
+  position: relative;
+  min-width: 106px;
+  margin-left: 12px;
+}
+
+.btn-default:before, .btn-default:after {
+  content: '';
+  position: absolute;
+  top: 0;
+}
+
+.btn-default:before {
+  right: 100%;
+  border: 18px solid transparent;
+  border-right: 12px solid #002f40;
+}
+
+.btn-default:after {
+  left: 100%;
+  border: 18px solid transparent;
+  border-left: 12px solid #002f40;
+}
+
+.btn-default .ico {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  margin: 0;
+  width: 41px;
+  height: 37px;
+  background: url(../../images/arrow-right.svg) no-repeat;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.btn-default:active,
+.btn-default:focus,
+.btn-default:hover,
+.btn-default:active:focus,
+.btn-default:active:hover {
+  color: #fff;
+  background-color: #002f40;
+}
+
+.btn-default:hover .ico {
+    margin-left: 12px;
+}
+
+textarea {
+  width: 100%;
+  height: 105px;
+}
+
+input:not([type="checkbox"]):focus, textarea:focus, keygen:focus, select:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+}
+
+form.form {
+  margin-top: 40px;
+}
+
+form.form p {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+form.form p label {
+  color: #002836 !important;
+  display: block;
+  max-width: 100%;
+  margin-bottom: 5px;
+}
+
+form.form p label.field-label {
+  font-weight: 700;
+  letter-spacing: .55px;
+}
+
+form.form p label.inline {
+  font-weight: normal;
+}
+
+form.form p.submit {
+  text-align: center;
+}
+
+div.pd-text .field-label:after,
+div.pd-select .field-label:after {
+  content: ":";
+}
+
+div.pd-text.required .field-label:after,
+div.pd-select.required .field-label:after {
+  content: ": *";
+}
+
+div.pd-text, div.pd-select {
+  width: 49%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+div.pd-checkbox {
+  width: 33.3%;
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+}
+
+div.pd-checkbox .field-label {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 27px;
+  white-space: nowrap;
+  position: absolute;
+  top: 0;
+  left: 40px;
+}
+
+div.pd-checkbox .inline {
+  padding-top: 30px;
+  margin-bottom: 43px;
+}
+
+div.pd-checkbox input {
+  height: 27px;
+  position: absolute;
+  top: 0;
+  left: 15px;
+}
+
+div.pd-textarea p {
+  width: 66.66666667%;
+  margin: 0 auto;
+}
+
+@media (min-width: 922px) {
+  div.pd-text input,
+  div.pd-text select,
+  div.pd-select input,
+  div.pd-select select {
+    width: 83%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.pd-checkbox {
+    width: 100%;
+  }
+
+  div.pd-text, div.pd-select {
+    width: 100%;
+  }
+
+  div.pd-textarea p {
+    width: 100%;
+  }
+}

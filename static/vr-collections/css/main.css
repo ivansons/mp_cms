@@ -1,0 +1,154 @@
+body {
+  padding-top: 0;
+}
+.t-center {
+  text-align: center;
+}
+.content.grid {
+  color: #fff;
+  min-height: 700px;
+  text-align: left;
+}
+.paper {
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.95);
+  margin-top: 100px;
+  margin-bottom: 20px;
+  padding: 3em 5em;
+  box-shadow: rgba(0, 0, 0, 0.156863) 0px 3px 10px, rgba(0, 0, 0, 0.227451) 0px 3px 10px;
+}
+@media screen and (max-width: 767px) {
+  .paper {
+    padding: 1em 2em;
+    margin-top: 65px;
+  }
+}
+.paper h1 {
+  font-size: 19px;
+  color: #337ab7;
+  margin-bottom: .3em;
+}
+.paper p {
+  color: #989693;
+  font-size: 12px;
+  line-height: 1.5em;
+}
+.paper p + p {
+  margin-top: .75em;
+}
+.paper form .form-group:first-child {
+  margin-top: 1.25em;
+}
+.paper form .form-actions {
+  margin-top: 2em;
+}
+.paper form .form-group:not(:first-child) {
+  margin-top: 2em;
+}
+.paper form label {
+  color: #666;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 0;
+  text-transform: uppercase;
+}
+.paper form .form-text {
+  color: #989693;
+  font-size: 12px;
+  line-height: 1.5em;
+}
+.paper input, .paper textarea {
+  color: #666;
+  margin-top: 0;
+  padding: .5em 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  font-weight: normal;
+  background-color: transparent;
+  border-bottom: 2px solid #ccc;
+}
+.paper textarea {
+  resize: none;
+}
+.paper input:focus, .paper input:active,
+.paper textarea:focus, .paper textarea:active {
+  border-bottom: 2px solid #00b8ce;
+}
+.paper button, .paper a.btn {
+  border-radius: 0;
+  font-weight: normal;
+  min-width: 219px;
+  text-transform: uppercase;
+}
+.paper button.invalid {
+  background: #E4E4E3;
+  cursor: not-allowed;
+}
+.paper button:active, .paper button:focus {
+  outline: none !important;
+}
+.paper .error-messages {
+  color: #BF211E;
+}
+.paper ul.error-messages {
+  padding-left: 0;
+  list-style: none;
+  margin-top: .25em;
+  margin-bottom: 0;
+}
+.paper ul.error-messages li:before {
+  content: "-";
+  margin-right: .5em;
+}
+.paper .result {
+  margin-top: 2em;
+}
+.paper .result p {
+  color: #333;
+  font-weight: 600;
+  word-wrap: break-word;
+}
+.banner {
+  background: rgb(1, 70, 90);
+  text-align: center;
+  padding: 3em 0;
+}
+.banner h2, .banner p {
+  font-family: 'Titillium Web', sans-serif;
+}
+.banner h2 {
+  color: #fff;
+}
+.banner p {
+  color: #ccc;
+  font-weight: 100;
+}
+.banner .btns {
+  margin-top: 2em;
+}
+.banner .btn {
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-weight: normal;
+  line-height: 20px;
+  margin: 0 10px 10px;
+  min-width: 219px;
+  padding: 11px 15px 10px;
+}
+.btn.btn-blue {
+  background: #00b8ce;
+  color: #fff;
+}
+.btn.btn-yellow {
+  background: #F9A217;
+  color: #fff;
+}
+#id_qrcode {
+  width: 100%;
+}
+#id_qrcode canvas {
+  margin: 2em auto;
+  max-width: 50%;
+}

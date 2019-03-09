@@ -1,0 +1,36 @@
+{% load staticfiles %}
+{% load widgy_tags %}
+<div class="container media-kit-box-msp-member">
+  <div class="row">
+    <div class="col-sm-6 col-md-8 media-kit-msp-member">
+      {% if self.upper_left_text %}<h3>{{ self.upper_left_text }}</h3>{% endif %}
+      {% if self.main_title and self.main_title_is_raw_html%}
+        {{ self.main_title|safe }}
+      {% elif self.main_title %}
+        <{{ self.main_title_tag }} class="rett"{% if self.main_title_color %} style="color: {{ self.main_title_color }};"{% endif %}>{{ self.main_title }}</{{ self.main_title_tag }}>
+      {% endif %}
+      {% if self.main_text %}
+        {% if self.main_text_is_raw_html %}
+          {{ self.main_text|safe }}
+        {% else %}
+          <p{% if self.main_text_color %} style="color: {{ self.main_text_color }};"{% endif %}>{{ self.main_text }}</p>
+        {% endif %}
+      {% endif %}
+      {% if self.get_children %}
+        <a href="{{ self.get_children.0.get_download_url }}" download title="{{ self.get_children.0.name }}" class="inline-msp-member-link link-blue">{{ self.get_children.0.name }}</a>
+        {% if self.get_children.count > 1 %}
+          {% for child in self.get_children|slice:"1:" %}
+            <span>&nbsp;|&nbsp;</span><a href="{{ child.get_download_url }}" download title="{{ child.name }}" class="inline-msp-member-link link-blue">{{ child.name }}</a>
+          {% endfor %}
+        {% endif %}
+      {% endif %}
+    </div>
+    <div class="col-sm-6 col-md-4">
+      {% if self.image %}
+        <img src="{{ self.image.url }}">
+      {% elif self.iframe_tag %}
+        {{ self.iframe_tag|safe }}
+      {% endif %}
+    </div>
+  </div>
+</div>

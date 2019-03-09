@@ -1,0 +1,11 @@
+{% load staticfiles %}
+{% load widgy_tags %}
+<div class="w-section home-hero">
+  <div class="vertical-element">
+    <div class="home-hero-content">
+      <div class="vertical-element" style="text-align: left;">
+        {% render self.get_children.0 %}
+      </div>
+    </div>
+  </div>
+</div>

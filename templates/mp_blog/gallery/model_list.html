@@ -1,0 +1,92 @@
+{% extends "mp_blog/gallery/base.html" %}
+{% load staticfiles %}
+{% block metadata %}
+  <title>{% block meta_title %}Matterport 3D Model Gallery{% endblock %}</title>
+  <meta name="description" content="Experience exotic and interesting places in the Matterport 3D Model Gallery, our public collection of virtual experiences created from real-world locations."/>
+{% endblock %}
+{% block blog-top %}
+  <div class="w-container">
+    <div class="w-section w-clearfix">
+      <div class="gallery-header">
+        <p class="module-blurb gallery">Explore your world in 3D for web and virtual reality</p>
+        <h1>Experience the real world in 3D</h1>
+        <p>Explore the world's largest library of virtual experiences of real places online or on your VR-enabled device.</p>
+      </div>
+      <div class="filter-3d-models wp3d-models-clearfix">
+        <span class="drop-btn">
+          {% if category %}
+            {{ category.title }}
+          {% else %}
+            All spaces
+          {% endif %}
+        </span>
+        <ul>
+          <li>
+            <a href="{% url 'gallery_model_list' %}" class="filter-link{% if not category %} active{% endif %}">All spaces</a>
+          </li>
+          {% for c in categories %}
+            <li>
+              <a href="{{ c.get_absolute_url }}" class="filter-link{% if c == category %} active{% endif %}">{{ c.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+        <div class="suggest-spaces">
+          <a href="{% url 'gallery_suggest_space' %}" title="Submit your Space" target="blank">Submit your Space</a>
+        </div>
+      </div>
+      <div class="key filter-3d-models">
+        <div class="key-icon-block">
+          <a href="{% if featured %}{% url 'gallery_model_list' %}{% else %}{% url 'gallery_featured_model' %}{% endif %}" class="filter-link{% if featured %} active{% endif %}">
+            <img height="48" src="{% static 'images/featured-icon.svg' %}" class="key-icon">
+            <div class="key-label">featured</div>
+          </a>
+        </div>
+      </div>
+      <div class="search filter-3d-models">
+        <form role="search" method="get" class="search-form" action="{% url 'gallery_model_search' %}">
+          <div class="search opened">
+            <div class="wrap">
+              <input type="search" placeholder="Search Gallery Spaces" name="q" value="" required>
+              <!-- removed input hidden with name "resource" -->
+              <button class="btn-submit" type="submit">Search</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="social filter-3d-models">
+        <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fmatterport.com%2Fgallery%2F&width=131&layout=button_count&action=like&show_faces=true&share=true&height=46&appId=179068872438117"
+                width="180"
+                height="46"
+                style="border:none; overflow:hidden;"
+                scrolling="no"
+                frameborder="0"
+                allowTransparency="true"
+                allow="vr"></iframe>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% block blog-content %}
+  {% if error %}
+    <h5>{{ error }}</h5>
+  {% else %}
+    <div class="w-row">
+      <div id="wp3d-models" class="spaces filtering-on">
+        {% for object in object_list %}
+          {% include "mp_blog/gallery/_model_preview.html" %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="w-container single-cta">
+    {% include "_pagination.html" %}
+  </div>
+{% endblock %}
+{% block extra_js %}
+  <script type="text/javascript" src="{% static 'js/library/wp3d-frontend.js' %}"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/isotope/2.2.2/isotope.pkgd.min.js"></script>
+  <script type="text/javascript" src="{% static 'js/library/slick.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/library/jquery.textPlaceholder.js' %}"></script>
+  {{ block.super }}
+{% endblock %}

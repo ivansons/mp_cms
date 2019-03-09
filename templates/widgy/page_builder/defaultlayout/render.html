@@ -1,0 +1,31 @@
+{% extends widgy.owner.base_template|default:"layout_base.html" %}
+{% load widgy_tags %}
+{% block content %}
+{% with main=self.get_children.0 hero=self.get_children.1 %}
+  {% with has_hero=hero.get_children %}
+    {% if has_hero %}
+      {% render hero %}
+      {% with hero_content=hero.get_children.0 %}
+        {% with has_hero_subcontent=hero_content.get_children %}
+          {% if has_hero_subcontent %}
+            {% if hero_content.get_children.0.class_name == "mp_widgets.heroleftcontentb" %}
+              <div class="content home-hero-b-content">
+            {% else %}
+              <a href="#next-gen" class="w-inline-block hero-down-arrow"><div></div></a>
+              <div class="content home-content">
+            {% endif %}
+          {% else %}
+            <a href="#next-gen" class="w-inline-block hero-down-arrow"><div></div></a>
+            <div class="content home-content">
+          {% endif %}
+        {% endwith %}
+      {% endwith %}
+    {% else %}
+      <div class="content grid">
+    {% endif %}
+      {% render main %}
+      {% include "_footer.html" %}
+    </div>
+  {% endwith %}
+{% endwith %}
+{% endblock %}

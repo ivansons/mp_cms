@@ -1,0 +1,10 @@
+{% load staticfiles %}
+{% load widgy_tags %}
+<div class="w-embed w-hidden-small w-hidden-tiny home-video-bg">
+  <video style="min-width: 100%; min-height: 100%; position: relative; z-index: 0;" poster="{{ self.bg_image.url }}" muted autoplay loop>
+    <source src="{{ self.bg_video_url }}">
+  </video>
+</div>
+{% for child in self.get_children %}
+  {% render child %}
+{% endfor %}

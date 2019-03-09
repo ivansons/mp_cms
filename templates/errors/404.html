@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block body_css_class %} class="inner"{% endblock %}
+{% block content %}
+<section class="info-section">
+  <div class="container">
+    <h1>404</h1>
+    <p>Oops! The page you're looking for wasn't found.</p>
+  </div>
+</section>
+{% include "_footer.html" %}
+{% endblock %}

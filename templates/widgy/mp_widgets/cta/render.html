@@ -1,0 +1,9 @@
+{% load staticfiles %}
+{% load widgy_tags %}
+<div class="cta-button-wrapper">
+  <a href="{{ self.url }}" data-ix="new-button-hover" class="w-inline-block new-button"><img src="{% static "images/button-left.png" %}" class="small">
+    <div class="button-center small">
+      <div class="button-text">{{ self.text }}</div>
+    </div><img src="{% static "images/button-right.png" %}" class="small"><img src="{% static "images/button-arrow.png" %}" class="button-arrow small">
+  </a>
+</div>

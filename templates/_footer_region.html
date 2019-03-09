@@ -1,0 +1,28 @@
+<div style="background: #002c40; width: 100%; padding: 40px 0 40px 0;">
+  <div class="container style-2" style="text-align: center;">
+    <h2 style="color: #f8f8f8; font-family: 'Titillium Web', sans-serif; font-size: 30px;">Find 3D Photographers &amp; Reality Capture Services in Your Area</h2>
+    <h3 style="color: #f8f8f8; font-family: 'Open Sans', sans-serif; font-size: 12pt;">Our Service Partners are in every US State and over 75 countries around the world. Find one near you!</h3>
+    <a href="/find-a-photographer/" style="color: #f8f8f8; background-color: #00b8ce; display: inline-block; padding: 18px 36px 18px 36px; margin-top: 18px; font-family: 'Titillium Web', sans-serif; font-size: 18px;"><strong>FIND A 3D PRO NEAR YOU</strong></a>
+    {% comment %}
+    {% if regions %}
+    <div id="footer-regions">
+      <div class="row">
+        <h3 class="pull-left" style="color: #f8f8f8; font-family: 'Open Sans', sans-serif; font-size: 18px;"><strong>Just a few of the cities we’re in...</strong></h3>
+      </div>
+      <div class="row">
+        {% for region in regions %}
+        <div class="col">
+          <ul>
+            <li><a href="{{ region.get_absolute_url }}" style="color: #f8f8f8; font-family: 'Open Sans', sans-serif; font-size: 18px;"><strong>{{ region.region }}</strong></a></li>
+          </ul>
+        </div>
+        {% if forloop.counter|divisibleby:4 %}
+        </div><div class="row">
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+    {% endcomment %}
+  </div>
+</div>

@@ -1,0 +1,36 @@
+{% load staticfiles %}
+{% load widgy_tags %}
+<div class="w-slide slide01">
+  <div class="w-row case-study-2-col">
+    <div class="w-col w-col-6 w-col-stack column">
+      <div class="case-people"{% if self.image %} style="background-image: url('{{ self.image.url }}'); background-position: right;"{% endif %}>
+        <div class="vertical-element">
+          {% if self.get_children.0.title %}
+            <{{ self.get_children.0.title_tag }} class="white-text"{% if self.get_children.0.title_color %} style="color: {{ self.get_children.0.title_color }};"{% endif %}>
+              {{ self.get_children.0.title }}
+            </{{ self.get_children.0.title_tag }}>
+          {% endif %}
+          <p class="white-text"{% if self.get_children.0.text_color %} style="color: {{ self.get_children.0.text_color }};"{% endif %}>
+            {% if self.get_children.0.text_is_raw_html %}
+              {{ self.get_children.0.text|safe }}
+            {% else %}
+              {{ self.get_children.0.text }}
+            {% endif %}
+          </p>
+          {% for child in self.get_children.0.get_children %}
+            <div class="cta-spacing">
+              {% render child %}
+            </div>
+          {% endfor %}
+          <div class="keyline-yellow"></div>
+          <div class="case-study-quote"{% if self.customer_quote_color %} style="color: {{ self.customer_quote_color }};"{% endif %}>{{ self.customer_quote }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="w-col w-col-6 w-col-stack w-clearfix column">
+      <div class="case-text">
+        {% render self.get_children.1 %}
+      </div>
+    </div>
+  </div>
+</div>

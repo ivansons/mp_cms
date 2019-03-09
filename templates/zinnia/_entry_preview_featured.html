@@ -1,0 +1,35 @@
+{% if entries %}
+  {% with object=entries.0 %}
+    <div class="row first-post">
+      <div class="col-sm-6">
+        <a href="{{ object.get_absolute_url }}" title="{{ object.title }}">
+          <h2>{{ object.title }}</h2>
+        </a>
+        <p class="author">
+          {{ object.authors.0 }}
+          <span>{{ object.publication_date|date:"DATE_FORMAT" }}</span>
+        </p>
+        <p>{{ object.html_preview|safe }}</p>
+        <a href="{{ object.get_absolute_url }}" class="read-more" title="{{ object.title }}">Read More</a>
+      </div>
+      <div class="col-sm-6">
+        {% if object.image %}<img src="{{ object.image.url }}" alt="{{ object.image_caption }}">{% endif %}
+      </div>
+    </div>
+  {% endwith %}
+  {% with objects=entries|slice:"1:" %}
+  {% if objects %}
+    <div class="row second-post">
+      <div class="col-xs-12 col-sm-12">
+        <div class="row">
+          {% for object in objects %}
+            <div class="col-xs-12 col-sm-6">
+              {% include "zinnia/_entry_preview.html" %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  {% endwith %}
+{% endif %}

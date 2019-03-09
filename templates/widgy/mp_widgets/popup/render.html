@@ -1,0 +1,89 @@
+{% load staticfiles %}
+{% load widgy_tags %}
+{% if self.is_first_of_type %}
+  <script>
+    $(function() {
+      $('head')
+          .append('<link rel="stylesheet" type="text/css" href="{% static "css/fancybox/jquery.fancybox.css" %}" />')
+          .append('<link rel="stylesheet" type="text/css" href="{% static "css/popup-widget.css" %}" />')
+          .append('<script src="{% static "js/jquery.fancybox.pack.js" %}"><\/script>');
+    });
+  </script>
+{% endif %}
+<span id="popup-widget-trigger-{{ self.id }}" data-fancybox-href="#popup-widget-{{ self.id }}"></span>
+<div id="popup-widget-{{ self.id }}" class="popup-widget" style="display:none;">
+  {% if self.title or self.description %}
+    <div class="popup-header">
+      {% if self.title %}<h2>{{ self.title }}</h2>{% endif %}
+      {% if self.description %}<p>{{ self.description }}</p>{% endif %}
+    </div>
+  {% endif %}
+  {% if self.get_children %}
+    <div class="popup-body">
+      {% for child in self.get_children %}
+        {% render child %}
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+<script>
+  $(function() {
+    var configs = {
+      id: {{ self.id }},
+      cookie_name: '{{ self.get_cookie_name }}' + '_hide',
+      recurrence: {{ self.recurrence|default:9999 }},
+      delay: {{ self.delay_in_milliseconds }}
+    };
+
+    var counter = 0;
+
+    /* Make sure fancybox is loaded */
+    var onFancyboxLoad = function (cb) {
+      if (typeof $.fancybox == 'function') {
+        cb();
+      } else if (counter < 100) {
+        setTimeout(function () {
+          onFancyboxLoad(cb);
+        }, 50);
+      }
+      counter++;
+    };
+
+    onFancyboxLoad(function () {
+      /* Set cookies when user close popup */
+      var setHidePopUpCookie = function () {
+        var popup_hide = Cookies.get(configs.cookie_name);
+        if (!popup_hide) {
+          Cookies.set(configs.cookie_name, true, {
+            expires: configs.recurrence
+          });
+        }
+      };
+
+      /* Popup widget */
+      $("#popup-widget-trigger-" + configs.id).fancybox({
+        width: '85%',
+        maxWidth: 640,
+        autoSize: false,
+        autoHeight: true,
+        closeClick: false,
+        fitToView: false,
+        openEffect: 'fade',
+        closeEffect: 'none',
+        afterClose: function () {
+          setHidePopUpCookie();
+        }
+      });
+
+      /* Show popup */
+      var showPopup = function () {
+        var popup_hide = Cookies.get(configs.cookie_name);
+        if (!popup_hide) {
+          $("#popup-widget-trigger-" + configs.id).click();
+        }
+      };
+
+      setTimeout(showPopup, configs.delay);
+    });
+  });
+</script>

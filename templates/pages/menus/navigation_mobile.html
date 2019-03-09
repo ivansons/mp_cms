@@ -1,0 +1,33 @@
+{% load staticfiles %}
+{% load pages_tags %}
+{% load startswith %}
+{% if page_branch_in_menu %}
+  {% for page in page_branch %}
+    {% if page.in_menu and page.published and page.branch_level <= 1 %}
+      {% if page.is_primary %}
+        {% if page.has_children %}
+          <li class="mobile-visible">
+            <div id="id-navlink-m-{{ page.id }}" class="menu-mobile">
+              <span class="menu-element-mobile">{{ page.title }}</span>
+              <ul class="sub-menu-mobile">
+                {% page_menu page %}
+              </ul>
+            </div>
+          </li>
+        {% else %}
+          <li class="mobile-visible">
+            <a id="id-navlink-m-{{ page.id }}" href="{{ page.get_absolute_url }}"{% if page.extension.popup %} target="_blank"{% endif %} class="menu-element-mobile">
+              {{ page.title }}{% if page.extension.popup %} <i class="fa fa-external-link-square icon-external-link" aria-hidden="true"></i>{% endif %}
+            </a>
+          </li>
+        {% endif %}
+      {% else %}
+        <li class="sub-item">
+          <a href="{{ page.get_absolute_url }}"{% if page.extension.popup %} target="_blank"{% endif %} class="sub-dropdown-element">
+            <span>{{ page.title }}{% if page.extension.popup %} <i class="fa fa-external-link-square icon-external-link" aria-hidden="true"></i>{% endif %}</span>
+          </a>
+        </li>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endif %}

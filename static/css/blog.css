@@ -1,0 +1,88 @@
+article a, .container a {
+  display: inline;
+  font-weight: inherit;
+}
+.container {
+  text-align: left;
+}
+.pagination a {
+  line-height: inherit;
+}
+@keyframes hideFixedToolbar {
+  to {
+    -moz-transform: translate3d(0, 70px, 0);
+    -ms-transform: translate3d(0, 70px, 0);
+    -webkit-transform: translate3d(0, 70px, 0);
+    transform: translate3d(0, 70px, 0);
+  }
+}
+@-webkit-keyframes hideFixedToolbar {
+  to {
+    -moz-transform: translate3d(0, 70px, 0);
+    -ms-transform: translate3d(0, 70px, 0);
+    -webkit-transform: translate3d(0, 70px, 0);
+    transform: translate3d(0, 70px, 0);
+  }
+}
+.fixed-toolbar {
+  color: #1ca5dd;
+  background: #fff;
+  border-top: 1px solid #e4e4e4;
+  height: 70px;
+  line-height: 43px;
+  padding: 15px 15px 12px;
+  text-align: center;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  -moz-transform: translate3d(0, 70px, 0);
+  -ms-transform: translate3d(0, 70px, 0);
+  -webkit-transform: translate3d(0, 70px, 0);
+  transform: translate3d(0, 70px, 0);
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+.fixed-toolbar.on {
+  moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -moz-animation: hideFixedToolbar 0.2s ease-in 5s forwards;
+  -webkit-animation: hideFixedToolbar 0.2s ease-in 5s forwards;
+  -o-animation: hideFixedToolbar 0.2s ease-in 5s forwards;
+  animation: hideFixedToolbar 0.2s ease-in 5s forwards;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+/* search box */
+.w-container .search.opened .wrap input {
+  background: #fff;
+  border: 1px solid #bab8b6;
+  border-radius: 6px;
+  color: #9e9b98;
+  font-size: 14px;
+  height: 28px;
+  line-height: 20px;
+  padding: 2px 14px;
+  text-transform: none;
+  transition: all .3s;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-right: .5em;
+}
+.w-container .btn-submit {
+  width: 17px;
+  height: 17px;
+  font-size: 0;
+  line-height: 0;
+  background: url(../images/ico-search-gray.svg) 50% 50% no-repeat;
+  position: relative;
+  display: inline-block;
+}

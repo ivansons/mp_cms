@@ -1,0 +1,318 @@
+.inner,
+.content {
+  background-color: #E6E6E6;
+}
+
+.tx {
+  color: #006477;
+}
+
+.tx#back_all_apps:hover {
+  color: #00B8CE;
+}
+
+.back_all_apps_xs {
+  font-size: small;
+  color: #f8f8f8;
+}
+
+div.conten {
+  background-color: #005569;
+  color: #f8f8f8;
+}
+
+div.help_center_panel {
+  background: #005569;
+  width: auto;
+  color: #f8f8f8;
+  margin: 0px;
+  margin-left: 13px;
+}
+
+div.help_center_panel p {
+  padding: 13px;
+}
+
+.author {
+  color: #524D52;
+  font: 14px/18px'Open Sans';
+  text-decoration: none;
+  margin-top: 25px;
+  margin-right: 40px;
+}
+
+#publication_img {
+  padding: 0px;
+  margin-top: 20px;
+}
+
+#author_img {
+  margin: 20px;
+  margin-left: 40px;
+  margin-right: 0px;
+  width: 44px;
+  height: 44px;
+}
+
+.company {
+  font: 600 14px/18px'Open Sans';
+  color: #1BA6DF;
+  font-weight: bold;
+  padding-right: 40px;
+}
+
+a.company:first-letter {
+  text-transform: uppercase;
+}
+
+a.company:hover {
+  color: #005569;
+}
+
+.inverse {
+  color: #f8f8f8;
+  font: 400 24px'Titillium Web';
+  font-weight: bolder;
+}
+
+#more {
+  color: #006477;
+  tx-decoration: none;
+}
+
+#help {
+  color: #fff;
+  tx-decoration: none;
+}
+
+#btn {
+  color: #006477;
+}
+
+div#btn_detail_action a {
+  top: 12px;
+}
+
+a#btn_detail {
+  position: absolute;
+  text-transform: uppercase;
+  color: #006477;
+  font: 18px'Titillium Web';
+  font-weight: bolder;
+  box-shadow: 2px 2px 5px 0 grey;
+  padding: 3px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 5px;
+  margin-top: 22px;
+}
+
+p.app_body_text {
+  font: 14px/20px"Open Sans";
+  color: #524D52;
+}
+
+.btn.learn-more {
+  position: relative;
+  font: 'Titillium Web';
+  font-weight: bold;
+  line-height: 25px;
+  background: #00B8CE;
+  color: #f8f8f8;
+  padding: 6px 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.btn.learn-more:hover {
+  background: #FBCD00;
+  color: #005468;
+}
+
+.panel-footer,
+.panel-body,
+.well {
+  box-shadow: 0 2px 5px 0px grey;
+}
+
+.panel-footer {
+  background: #E7E7E7;
+  border: none;
+  width: 100%;
+  border-top-width: 0;
+  border-top-color: inherit;
+  margin-top: 0;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.panel-body {
+  background-color: #F7F7F7;
+  border: none;
+  border-radius: 4px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.panel-body h2.app_title {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font: 600 18px"Titillium Web";
+  color: #524D52 !important;
+}
+
+.body_detail {
+  background: #F8F8F8;
+}
+
+p.intro {
+  font: 14px/20px"Open Sans";
+  color: #524D52;
+}
+
+p#vr_interested {
+  font: 14px/20px"Open Sans";
+  color: #F8F8F8;
+}
+
+h1.vr_interested {
+  font: 30px"Titillium Web";
+  color: #F8F8F8;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+h1.title_list {
+  font: 30px"Titillium Web";
+  color: #524D52;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.panel-body p.app_body {
+  font: 14px/18px'Open Sans';
+  color: #524D52 !important;
+}
+
+.well {
+  background: #E7E7E7;
+  border: none;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+h1.app_title {
+  font: 30px"Titillium Web";
+  color: #524D52;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+h2.app_tagline {
+  font: 600 18px"Titillium Web";
+  color: #524D52;
+}
+
+h1.tx.app_title:first-letter,
+h2.tx.app_title:first-letter,
+h3.tx.app_title:first-letter {
+  text-transform: uppercase;
+}
+
+.back-movil {
+  color: #fff;
+  background-color: #005569;
+  font-size: small;
+}
+
+hr {
+  border-color: #006477;
+}
+
+#text-small-screen {
+  background-color: #fff;
+  color: #006477;
+  align: center;
+}
+
+div.colored_label h5#app,
+div.colored_label h5#service,
+div.colored_label h5#merchandise {
+  width: auto;
+  position: relative;
+  bottom: -10px;
+  text-align: right;
+  padding: 3px;
+  padding-bottom: 3px;
+  padding-right: 20px;
+  right: 0px;
+  color: #f8f8f8;
+  font: 600 18px'Titillium Web';
+  margin-right: 10px;
+  z-index: -1;
+}
+
+div.colored_label h5#app {
+  background-color: #CBA3BD;
+  margin-left: 85%;
+}
+
+div.colored_label h5#service {
+  background-color: #A0C5B8;
+  margin-left: 75%;
+}
+
+div.colored_label h5#merchandise {
+  background-color: #D8B0A8;
+  margin-left: 65%;
+}
+
+div.colored_label h5:before {
+  margin-left: -10px;
+  width: 90%;
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: inherit;
+  padding: 0;
+  z-index: -1;
+  -webkit-transform: skewX(-30deg);
+  -ms-transform: skewX(-30deg);
+  -o-transform: skewX(-30deg);
+  transform: skewX(-30deg);
+}
+
+@media screen and (min-width: 1024px) {
+  div.colored_label h5#app {
+    background-color: #CBA3BD;
+    margin-left: 80%;
+  }
+  div.colored_label h5#service {
+    background-color: #A0C5B8;
+    margin-left: 70%;
+  }
+  div.colored_label h5#merchandise {
+    background-color: #D8B0A8;
+    margin-left: 65%;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  div.colored_label h5#app {
+    background-color: #CBA3BD;
+    margin-left: 80%;
+  }
+  div.colored_label h5#service {
+    background-color: #A0C5B8;
+    margin-left: 70%;
+  }
+  div.colored_label h5#merchandise {
+    background-color: #D8B0A8;
+    margin-left: 55%;
+  }
+}

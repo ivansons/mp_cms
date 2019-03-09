@@ -1,0 +1,3 @@
+# venv requirements for Vagrant dev env
+-r _base.txt
+psycopg2==2.7.5

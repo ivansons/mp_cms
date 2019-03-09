@@ -1,0 +1,22 @@
+{% load staticfiles %}
+{% load widgy_tags %}
+<div style="height: 300px;background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.29)), url('{{ self.image.url }}');background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.29)), url('{{ self.image.url }}');background-repeat: no-repeat;background-position: 0px 0px;background-size: auto, cover;">
+</div>
+<div class="re-brokerages-col">
+  <{{ self.get_children.0.title_tag }} style="color:{{ self.get_children.0.title_color }};">
+    {% if self.get_children.0.text_is_raw_html %}
+      {{ self.get_children.0.title|safe }}
+    {% else %}
+      {{ self.get_children.0.title }}
+    {% endif %}
+  </{{ self.get_children.0.title_tag }}>
+  <div class="keyline-yellow"></div>
+  {% if self.get_children.0.text_is_raw_html %}
+    {{ self.get_children.0.text|safe }}
+  {% else %}
+    {{ self.get_children.0.text }}
+  {% endif %}
+  {% for child in self.get_children.0.get_children %}
+    {% render child %}
+  {% endfor %}
+</div>

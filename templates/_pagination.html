@@ -1,0 +1,13 @@
+{% if paginator %}
+  <nav class="pagination">
+    <ul class="mp-pagination">
+    {% if paginator.num_pages > 1 %}
+      {% for p in paginator.page_range %}
+        <li{% if page_obj.number == p %} class="active"{% endif %}>
+          <a href="?page={{ p }}">{{ p }}</a>
+        </li>
+      {% endfor %}
+    {% endif %}
+    </ul>
+  </nav>
+{% endif %}

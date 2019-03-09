@@ -1,0 +1,130 @@
+{% extends "zinnia/entry_detail.html" %}
+{% load staticfiles %}
+{% block metadata %}
+  <title>{% block meta_title %}{{ object.title }} - Matterport{% endblock %}</title>
+{% endblock %}
+{% block extra_metadata %}
+  {% for og_tag in object.og_tags_list %}
+    {{ og_tag|safe }}
+  {% endfor %}
+{% endblock extra_metadata %}
+{% block css %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static "css/wp-avista-styles.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/wp-avista-styles-new.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/wp-avista-styles-201605.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/header-new.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/wp-slick.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "cookie_bar/cookiebar_v1.5.9.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/wp-migration-fix.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/fancybox/jquery.fancybox.css" %}">
+{% endblock %}
+{% block extra_css %}
+  <link rel="stylesheet" type="text/css" href="https://static.matterport.com/mp_cms/media/filer_public/bd/9c/bd9c2f66-674c-4cd7-84c8-1bd9538a44e4/form.css" />
+  <link rel="stylesheet" type="text/css" href="https://static.matterport.com/mp_cms/1.12.8-2-g63c8a0b/css/wp-avista-styles-new-02.css" />
+  <link rel="stylesheet" type="text/css" href="https://static.matterport.com/mp_cms/media/filer_public/a4/46/a4466ece-4fe5-4009-8dab-8f612367f7fd/core-vr-vertical.css" />
+  <link rel="stylesheet" type="text/css" href="https://static.matterport.com/mp_cms/media/filer_public/8d/f4/8df49563-5e04-4bf1-a5b1-ce6008fb7a78/styles-new-03.css" />
+  <link rel="stylesheet" type="text/css" href="https://static.matterport.com/mp_cms/media/filer_public/68/6b/686baa5a-8d45-45af-b4f8-27872c83b6ad/styles-new-04.css" />
+  <style>
+    .logo-client {
+      clip-path: circle(50% at center);
+    }
+    .logo-client img {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  </style>
+{% endblock %}
+{% block jqueryjs %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+{% endblock %}
+{% block blog-top %}{% endblock %}
+{% block blog-content %}
+<figure class="banner">
+  <div class="container">
+    <div class="cell case-study-cell">
+      <h3>CASE STUDY</h3>
+      <h1>{{ object.title }}</h1>
+      <p>{{ object.lead }}</p>
+    </div>
+  </div>
+  <img src="{% if object.background_image %}{{ object.background_image.url }}{% else %}{% static "images/faceted-blue-bg.png" %}{% endif %}" alt="case study background image">
+</figure>
+
+<div class="case-study-single">
+  <span class="logo-client">
+    <img src="{{ object.image.url }}" alt="{{ object.image_caption|default:"case study" }}" />
+  </span>
+  <div class="container">
+    <div class="row clearfix">
+      <div class="col-60">
+        {{ object.content|safe }}
+      </div>
+      <div class="col-40">
+        {% if object.quotes.all.exists %}{% with quote=object.quotes.all.first %}
+        <div class="blockquote">
+          <p>“{{ quote.content }}”</p>
+          <span>{{ quote.name }}<br />{{ quote.title }}</span>
+        </div>
+        {% endwith %}{% endif %}
+        <div class="gray-box">
+          {{ object.content_right|safe }}
+        </div>
+      </div>
+    </div>
+  {% if object.quotes.all.exists %}
+  <div class="container">
+    <div class="row">
+      <div class="slider-test">
+        {% for quote in object.quotes.all %}
+        <div class="single-slide">
+          <p class="text">“{{ quote.content }}”</p>
+          <p class="title">{{ quote.name }}<br />{{ quote.title }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
+
+{% block js %}
+  <script src="{% static "js/geoip.js" %}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="{% static "js/main.js" %}"></script>
+  <script src="{% static "js/jquery.fancybox.pack.js" %}"></script>
+  <script src="{% static "js/wpLegacy/animsition.min.js" %}"></script>
+  <script src="{% static "js/wpLegacy/jquery.textPlaceholder.js" %}"></script>
+  <script src="{% static "js/wpLegacy/wow.min.js" %}"></script>
+  <script src="{% static "js/wpLegacy/grayscale.js" %}"></script>
+  <script src="{% static "js/wpLegacy/slick.min.js" %}"></script>
+  <script src="{% static "js/wpLegacy/jquery.fancybox.pack.js" %}"></script>
+  <script src="{% static "js/wpLegacy/jquery.appear.js" %}"></script>
+  <script src="{% static "js/wpLegacy/avista-scripts.js" %}"></script>
+  <script src="{% static "js/wpLegacy/avista-scripts-new.js" %}"></script>
+  <script src="{% static "js/wpLegacy/gravityforms.min.js" %}"></script>
+  <script src="{% static "js/navigation.js" %}"></script>
+  <!--[if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
+  {% for javascript_file in self.javascript_files %}
+    <script src="{{ javascript_file }}"></script>
+  {% endfor %}
+  <script>
+      mp.geoip.set_phone_number();
+  </script>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://static.matterport.com/mp_cms/media/filer_public/be/a8/bea8dc99-8041-4e47-af1e-7847b7d2761c/custom-form.js"></script>
+<script src="https://static.matterport.com/mp_cms/media/filer_public/51/e6/51e60e33-da62-4ec7-83b9-375c2616bdd6/custom-formselect.js"></script>
+<script src="https://static.matterport.com/mp_cms/media/filer_public/f4/60/f460e234-4234-4d12-805f-5cf6ca149aaf/bgc_clear-inputs-focus-class.js"></script>
+<script src="https://static.matterport.com/mp_cms/media/filer_public/b0/55/b05594da-c0a5-4a8f-a1e5-46f7619b1e54/scripts.js"></script>
+<script src="https://static.matterport.com/mp_cms/1.12.8-2-g63c8a0b/js/wpLegacy/avista-scripts-new-02.js"></script>
+<script src="https://static.matterport.com/mp_cms/media/filer_public/41/c1/41c11e1f-e3ca-4c8d-ab55-e741340f246a/scripts-new-03.js"></script>
+<script src="https://static.matterport.com/mp_cms/media/filer_public/b3/60/b3602f8b-c197-455d-95e6-1817ac737919/scripts-new-04.js"></script>
+<script src="https://use.fontawesome.com/01458ca505.js"></script>
+{% endblock %}

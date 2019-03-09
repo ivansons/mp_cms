@@ -1,0 +1,287 @@
+{% load staticfiles %}
+{% load pages_tags %}
+{% load i18n %}
+<div id="header">
+  <div class="container">
+    <strong class="logo">
+      <a id="id-navlink-logo" href="/"></a>
+    </strong>
+    <a href="#" class="open-nav"><span></span><span></span><span></span></a>
+    <div class="nav-bar">
+      <div class="top clearfix">
+        <ul>
+          <li class="dropdown clearfix lg-visible md-visible sm-visible xs-hidden">
+              <a class="btn btn-secondary dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="contact-box">
+                  <div class="contact">
+                    <i class="fa fa-phone-square" aria-hidden="true" id='nav-icon'></i>
+                    <span class="geo-phone-number-text">+1 (888) 993-8990</span>
+                  </div>
+                  <div class="phone">
+                    <i class="fa fa-envelope" aria-hidden="true" id='nav-icon'></i>
+                    Email, or call
+                  </div>
+                </div>
+              </a>
+              <div class="dropdown-menu contact" aria-labelledby="dropdownMenuLink" id="dropdownContact">
+                <div class="box-dropdown">
+                  <a class="geo-phone-number-link" href="tel:+18889938990">
+                    <i class='fa fa-phone-square nav-icon-dropdown phone'></i>
+                    <p id="id-navlink-phone" class="text-dropdown phone geo-phone-number-text">+1 (888) 993-8990</p>
+                    <p class="subtext-navigation">Call now to talk to a sales representative</p>
+                  </a>
+                </div>
+                <div class="box-dropdown">
+                  <a href="/contact-us/">
+                    <i class='fa fa-envelope nav-icon-dropdown'></i>
+                    <p class="text-dropdown email">Email Sales</p>
+                    <p class="subtext-navigation">Questions? We're here to help!</p>
+                  </a>
+                </div>
+                <div class="box-dropdown">
+                  <a href="https://support.matterport.com">
+                    <i class='fa fa-camera nav-icon-dropdown camera'></i>
+                    <p class="text-dropdown camera">Contact Support</p>
+                    <p class="subtext-navigation">Submit and track your support tickets</p>
+                  </a>
+                </div>
+              </div>
+          </li>
+          <li class="xs-visible">
+            <a id="id-navlink-email" href="/contact-us/">
+              <i class="fa fa-envelope" aria-hidden="true" id='nav-icon'></i>
+            </a>
+          </li>
+          <li class="xs-visible">
+            <a id="id-navlink-call" class="geo-phone-number-link" href="tel:+18889938990">
+              <i class="fa fa-phone-square" aria-hidden="true" id='nav-icon'></i>
+            </a>
+          </li>
+          <li class="clearfix lg-visible md-visible sm-visible xs-hidden">
+            <a id="inline" class="btn-buy" href="#modalBuy">Buy</a>
+          </li>
+          <li class="dropdown clearfix lg-visible md-visible sm-visible" id="dropLogin">
+              <a class="dropdown-toggle" href="#" role="button" id="dropdownLoginLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-user" aria-hidden="false" id="id-navlink-login"></i>
+              </a>
+              <div class="dropdown-menu login" aria-labelledby="dropdownLoginLink">
+                <div class="box-dropdown">
+                  <a href="https://my.matterport.com"> 
+                    <i class='fa fa-user nav-icon-dropdown'></i>
+                    <p class="text-dropdown">Log In</p>
+                    <p class="subtext-navigation">Registered Matterport customers</p>
+                  </a>
+                </div>
+                <div class="box-dropdown">
+                  <i class='fa fa-flag-o nav-icon-dropdown'></i>
+                  <div class="text-dropdown">
+                    <a> Country / Language</a>
+                  </div>
+                  <p class="subtext-navigation"><select id="language-select"></select></p>
+                </div>
+              </div>
+          </li>
+          <li class="mobile-hidden dropdown" id="dropSearch">
+            <a href="#" class="dropdown-toggle" id="searchsubmit" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="search" style="height: 50px;">
+                <i class="btn-submit"></i>
+              </div>
+            </a>
+            <div class="dropdown-menu sdrop" aria-labelledby="searchsubmit">
+              <div class="box-dropdown_2">
+                <form role="search" method="get" class="search-form" action="/search/">
+                  <div class="dropdown-search">
+                    <input class="search_input" type="search" placeholder="Search" id="s" name="q" value="">
+                    <button class="btn-search" type="submit" id="submitSearch">Search</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <ul class="navigation md-sm-hidden">
+        <!-- <li class="mobile-visible">
+          <form action="/search/">
+            <div class="mobile-search">
+              <input type="search" placeholder="" name="q" value="">
+              <button type="submit" class="btn-submit">search</button>
+              <a href="#" class="close-nav">close nav</a>
+            </div>
+          </form>
+        </li> -->
+        <li class="mobile-visible">
+          <!-- <div class="nav-content mobile-nav"> -->
+            <!-- <span class="title"> -->
+              <!-- <a id="id-navlink-buy" class="btn-buy" data-toggle="modal" data-target="#id-buy-dropdown"></a> -->
+            <!-- </span> -->
+          <!-- </div> -->
+        </li>
+        {% page_menu "pages/menus/navigation.html" %}
+        <div id="container-btn-buy" class="clearfix xs-visible sm-visible" style="text-align: center;">
+          <a id="inline" class="btn-buy" href="#modalBuy">BUY MATTERPORT</a>
+        </div>
+        <span>&nbsp;</span>
+        {% page_menu "pages/menus/navigation_mobile.html" %}
+        <li class="nav-content login mobile-visible" style="margin-top: 20px;">
+          <div style="margin-top: 0;">
+            <i class='fa fa-phone-square nav-icon-dropdown phone'></i>
+            <div style="margin-left: 53px; margin-top: -30px;">
+              <a class="geo-phone-number-link" href='tel:+18889938990' style='color: #f8f8f8;'> <strong class="geo-phone-number-text">+1 (888) 993-8990</strong></a>
+            </div>
+          </div>
+          <div style="margin-top: 30px;">
+            <i class='fa fa-envelope nav-icon-dropdown'></i>
+            <div style="margin-left: 53px; margin-top: -23px;">
+              <a href="/contact-us/" style='color: #f8f8f8;'> <strong>Email Sales</strong></a>
+            </div>
+          </div>
+          <div style="margin-top: 30px;">
+            <i class='fa fa-camera nav-icon-dropdown camera'></i>
+            <div style="margin-left: 53px; margin-top: -23px;">
+              <a href="https://support.matterport.com" style='color: #f8f8f8;'> <strong>Contact Support</strong></a>
+            </div>
+          </div>
+          <div style="margin-top: 30px; margin-bottom: 20px;">
+            <i class='fa fa-user nav-icon-dropdown'></i>
+            <div style="margin-left: 53px; margin-top: -23px;">
+              <a href="https://my.matterport.com" style='color: #f8f8f8;'> <strong>Log In</strong></a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- new modal -->
+  <div style="display: none">
+    <div id="modalBuy">
+      <div class="modal-content">
+        <!-- modal body -->
+        <div class="modal_col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="modal-header xs-visible lg-hidden md-sm-hidden">
+          <a title="Close" class="close-modal" href="javascript:;"><i class="fa fa-angle-double-left"></i> Back</a>
+        </div>
+        <div class="modal-body">
+            <!-- modal left -->
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="modal_left">
+              <!-- modal title 1 -->
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 modal_buy_title">
+                <h5 class="modal-title text-center">Scanning Many Places?</h5>
+              </div>
+              <!-- end modal title 1 -->
+              <!-- modal body 1 -->
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 modal_body_1 modal-body">
+                <!-- <div class="modal_col_left col-lg-8 col-md-8 col-sm-8"> -->
+                <div class="modal_col_left col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                  <h5>Buy a Pro2 3D Camera</h5>
+                  <ul class="list">
+                    <li>Manage your own 3D scans</li>
+                    <li>Provide 3D scanning as a service</li>
+                    <li>Emply your own operators</li>
+                  </ul>
+                </div>
+                <div class="modal_col_right col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                  <img src="https://static.matterport.com/mp_cms/media/filer_public/fd/8c/fd8c5ed7-cae9-4f43-99e2-684d8ab27222/matterport-pro2-3d-camera.png" class="img-responsive center-block">
+                </div>
+                <!-- modal button in to the body -->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 modal_button">
+                  <center><a href="https://buy.matterport.com" class="btn_pricing">See pricing &amp; order now <i class="fa fa-angle-double-right"></i></a></center>
+                </div>
+                <!-- end modal button in to the body -->
+              </div>
+              <!-- end modal body 1 -->
+            </div>
+            <!-- end modal left -->
+            <!-- modal right -->
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="modal_right">
+              <!-- modal title 2 -->
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 modal_buy_title_2">
+                <h5 class="modal-title text-center">Don't want to do it yourself?</h5>
+              </div>
+              <!-- end modal title 2 -->
+              <!-- modal body 2 -->
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 modal_body_2 modal-body">
+                <!-- <div class="modal_col_left col-lg-8 col-md-8 col-sm-8"> -->
+                <div class="modal_col_left col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                  <h5>Hire a Service Partner</h5>
+                  <ul class="list">
+                    <li>Quick, professional 3D scanning</li>
+                    <li>Expert consultations</li>
+                  </ul>
+                </div> 
+                <div class="clearfix xs-hidden modal_col_right col-lg-4 col-md-4 col-sm-4">
+                  <center><img src="https://static.matterport.com/mp_cms/media/filer_public/b9/a3/b9a3247a-786b-4e50-9258-3ba3682a8601/msp-badge.png" class="img-responsive"></center>
+                </div>
+                <!-- modal button in to the body -->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 modal_button text-center">
+                  <a href="https://matterport.com/find-a-photographer" class="text-center btn_photographer">Find a 3D photographer <i class="fa fa-angle-double-right"></i></a>
+                </div>
+                <!-- end modal button in to the body -->
+                <div class="clearfix lg-hidden md-sm-hidden xs-visible">
+                  <img src="https://static.matterport.com/mp_cms/media/filer_public/b9/a3/b9a3247a-786b-4e50-9258-3ba3682a8601/msp-badge.png" class="img-responsive center-block"> 
+                </div>
+              </div>
+              <!-- end modal body 2 -->
+            </div>
+            <!-- end modal right -->
+          </div>
+        </div>
+        <div class="modal-footer">
+          <span class="clearfix xs-visible">
+            &nbsp;
+          </span>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="lg-visible md-visible xs-hidden">
+              <center><a href="/contact-us/" class="btn-footer">Need help deciding? Contact Us</a></center>
+            </div>
+            <div class="xs-visible sm-visible">
+              <center><a href="/contact-us/" class="btn-footer-xs">Need help deciding? Contact Us</a></center>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end new modal -->
+  </div>
+</div>
+<script>
+  $('.dropdown#dropSearch').hover(function() {
+    $(this).find('.dropdown-menu.sdrop').stop(true, true).delay(100).fadeIn(200);
+  }, function() {
+    $(this).find('.dropdown-menu.sdrop').stop(true, true).delay(200).fadeOut(200);
+  });
+</script>
+<script>
+  $(document).ready(function() {
+  /* This is basic - uses default settings */
+  $("a#single_image").fancybox();
+  /* Using custom settings */
+  $("a#inline").fancybox({
+    'hideOnContentClick': true,
+    'autoCenter' : true,
+  });
+  /* Apply fancybox to multiple items */
+});
+</script>
+<script>
+  $('a.close-modal').click(function(){
+    parent.$.fancybox.close();
+  });
+</script>
+<script>
+$('.dropdown').hover(
+  function () {
+    $(this).find('.dropdown-menu').stop(true, true).delay(20).fadeIn(200);
+  },
+  function () {
+    $(this).find('.dropdown-menu').stop(true, true).delay(30).fadeOut(200);
+  },
+  function () {
+    $(this).find('.dropdown-menu.login').stop(true, true).delay(20).fadeIn(200);
+  },
+  function () {
+    $(this).find('.dropdown-menu.login').stop(true, true).delay(900).fadeOut(50);
+  }
+);
+</script>

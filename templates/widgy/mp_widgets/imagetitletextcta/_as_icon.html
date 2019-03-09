@@ -1,0 +1,7 @@
+{% load staticfiles %}
+{% load widgy_tags %}
+<div data-ix="new-interaction" class="icon-block"><img src="{{ self.image.url }}">
+  {% for child in self.get_children %}
+    {% render child %}
+  {% endfor %}
+</div>

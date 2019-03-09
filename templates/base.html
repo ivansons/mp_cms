@@ -1,0 +1,159 @@
+{% spaceless %}
+{% load staticfiles %}
+{% load compress %}
+{% load pages_tags %}
+{% load widgy_tags %}
+
+{% load cache %}
+{% load i18n %}
+{% load hreflang_headers %}
+<!DOCTYPE html>
+<html>
+<head>
+  {% hreflang_headers %}
+  <meta charset="utf-8">
+  {% block metadata %}
+  <title>{% block meta_title %}{% endblock %}</title>
+  <meta name="description" content="{% block meta_description %}{% endblock %}">
+  <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+  {% if page.extension.meta_robots %}
+  <meta name="robots" content="{{ page.extension.meta_robots }}">
+  {% endif %}
+  {% endblock %}
+  {% block extra_metadata %}
+  {% endblock extra_metadata %}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% if build_number %}
+  <meta name="build-number" content="{{ build_number }}">
+  {% endif %}
+  {% block css %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static "css/normalize.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/webflow.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/avista-styles-201605.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/matterport-v07-ui02.webflow.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/fancybox/jquery.fancybox.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/header-new.css" %}" id="id-header-style">
+  <link rel="stylesheet" type="text/css" href="{% static "css/avista-styles.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "cookie_bar/cookiebar_v1.5.9.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/msp-webinars-events-calendar.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/news-mp-media-kit.css" %}">
+  {% endblock %}
+  <link rel="shortcut icon" type="text/css" href="{% static "cookie_bar/x.png" %}">
+  <link rel="shortcut icon" type="image/x-icon" href="{% static "images/Matterport-favicon.png" %}">
+  <link rel="apple-touch-icon" href="{% static "images/Matterport-logo-blue-stroke.png" %}">
+  {% block jqueryjs %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+  {% endblock %}
+  <script src="{% static "cookie_bar/cookiebar_v1.5.9_mp.js" %}"></script>
+  <script src="https://cdn.optimizely.com/js/2846080468.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.2/js.cookie.min.js"></script>
+  {% block extra_css %}{% endblock %}
+  {% if not request.user.is_staff and settings.GOOGLE_GTM_ENABLED and settings.GOOGLE_GTM_ID %}
+  <script>
+    function setupAnalytics () {
+      cookieValueArray = document.cookie.match(/(;)?cookiebar=([^;]*);?/);
+      if (cookieValueArray) {
+        if ((cookieValueArray[2] == 'CookieAllowed') || (cookieValueArray[2] == 'UnknownCountry')) {
+          <!-- Google Tag Manager -->
+          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','{{ settings.GOOGLE_GTM_ID }}');
+          <!-- End Google Tag Manager -->
+        }
+      }
+    }
+    setupCookieBar(setupAnalytics);
+  </script>
+  {% endif %}
+  <script>
+    window.liveSettings = {
+      api_key: '{{ settings.TRANSIFEX_API_KEY }}'
+    };
+  </script>
+  <script src="https://cdn.transifex.com/live.js"></script>
+  <script>
+  {% autoescape off %}
+    Transifex.live.onFetchLanguages(function (languages) {
+      var languageCodes = [];
+      var sourceLanguageCode = Transifex.live.getSourceLanguage().code
+
+      $('#language-select').empty();
+      for (var i = 0; i < languages.length; ++i) {
+        $('#language-select').append('<option value="' + languages[i].code + '">' + languages[i].name + '</option>');
+        languageCodes.push(languages[i].code.replace('_', '-').toLowerCase());
+      }
+      $('#language-select').val(sourceLanguageCode);
+
+      $('#language-select').change(function () {
+        var prefix = window.location.pathname.split('/')[1];
+        prefix = prefix && $.inArray(prefix.toLowerCase(), languageCodes) >= 0 ? prefix : '';
+        var originalPathname = prefix ? window.location.pathname.replace('/' + prefix + '/', '/') : window.location.pathname;
+        Transifex.live.translateTo($(this).val());
+        var newPrefix = $(this).val().replace('_', '-').toLowerCase();
+        window.location.pathname = newPrefix === sourceLanguageCode ? originalPathname : '/' + newPrefix + originalPathname;
+      });
+
+      Transifex.live.onTranslatePage(function (language_code) {
+        $('#language-select').val(language_code);
+      });
+    });
+  {% endautoescape %}
+  </script>
+  <!-- begin olark code -->
+  <script>
+    ;(function(o,l,a,r,k,y){if(o.olark)return;
+    r="script";y=l.createElement(r);r=l.getElementsByTagName(r)[0];
+    y.async=1;y.src="//"+a;r.parentNode.insertBefore(y,r);
+    y=o.olark=function(){k.s.push(arguments);k.t.push(+new Date)};
+    y.extend=function(i,j){y("extend",i,j)};
+    y.identify=function(i){y("identify",k.i=i)};
+    y.configure=function(i,j){y("configure",i,j);k.c[i]=j};
+    k=y._={s:[],t:[+new Date],c:{},l:a};
+    })(window,document,"static.olark.com/jsclient/loader.js");
+    /* Add configuration calls below this comment */
+    olark.identify('3293-230-10-9331');
+  </script>
+  <!-- end olark code -->
+</head>
+<body{% block body_css_class %}{% endblock %}>
+  {% block navigation %}{% include "_navigation.html" %}{% endblock %}
+  {% block content %}{% endblock %}
+  {% block extra_content %}
+    <div class="w-hidden-main w-hidden-medium"></div>
+  {% endblock %}
+  {% block js %}
+  <script src="{% static "js/geoip.js" %}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="{% static "js/modernizr.js" %}"></script>
+  <script src="{% static "js/md5.min.js" %}"></script>
+  <script src="{% static "js/webflow.js" %}"></script>
+  <script src="{% static "js/wpLegacy/animsition.min.js" %}"></script>
+  <script src="{% static "js/wpLegacy/jquery.textPlaceholder.js" %}"></script>
+  <script src="{% static "js/wpLegacy/wow.min.js" %}"></script>
+  <script src="{% static "js/wpLegacy/grayscale.js" %}"></script>
+  <script src="{% static "js/wpLegacy/slick.min.js" %}"></script>
+  <script src="{% static "js/wpLegacy/jquery.fancybox.pack.js" %}"></script>
+  <script src="{% static "js/wpLegacy/jquery.appear.js" %}"></script>
+  <script src="{% static "js/wpLegacy/avista-scripts.js" %}"></script>
+  <script src="{% static "js/wpLegacy/avista-scripts-new.js" %}"></script>
+  <script src="{% static "js/wpLegacy/gravityforms.min.js" %}"></script>
+  <script src="{% static "js/main.js" %}"></script>
+  <script src="{% static "js/navigation.js" %}"></script>
+  <script src="{% static "js/avista-scripts-201605.js" %}"></script>
+  <!--[if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
+  <script>
+    mp.geoip.set_phone_number();
+  </script>
+  {% endblock js %}
+  {% block extra_js %}{% endblock %}
+  {% block footer_js %}{% endblock %}
+  <!-- Rendered at {% now "c" %} -->
+</body>
+</html>
+{% endspaceless %}

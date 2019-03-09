@@ -1,0 +1,11 @@
+.btn-yellow {
+  background: #faac17 !important;
+}
+
+.btn-yellow:hover {
+  background: #1ca5dd !important;
+}
+
+.home-banner .btn:hover {
+  background: #faac17;
+}

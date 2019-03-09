@@ -1,0 +1,18 @@
+{% load staticfiles %}
+{% load widgy_tags %}
+<div class="w-section w-hidden-small w-hidden-tiny promo">
+  <div data-animation="slide" data-duration="500" data-infinite="1" data-delay="5000" data-autoplay="1" class="w-slider promo-slider">
+    <div class="w-slider-mask promo-slider-mask">
+      {% for child in self.get_children %}
+        {% render child %}
+      {% endfor %}
+    </div>
+    <div class="w-slider-arrow-left slider-arrows">
+      <div class="w-icon-slider-left"></div>
+    </div>
+    <div class="w-slider-arrow-right slider-arrows">
+      <div class="w-icon-slider-right"></div>
+    </div>
+    <div class="w-slider-nav w-round slide-nav"></div>
+  </div>
+</div>

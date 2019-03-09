@@ -1,0 +1,23 @@
+{% load staticfiles %}
+{% load widgy_tags %}
+<div class="{{ self.css_class|default:"w-section" }}">
+  <div data-animation="slide" data-duration="500" data-infinite="1" class="w-slider slider">
+    <div class="heading-15px-padding">
+      {% if self.main_title %}
+        <h2{% if self.main_title_color %} style="color: {{ self.main_title_color }};"{% endif %}>{{ self.main_title }}</h2>
+      {% endif %}
+    </div>
+    <div class="w-slider-mask case-study-mask">
+      {% for child in self.get_children %}
+        {% render child %}
+      {% endfor %}
+    </div>
+    <div class="w-slider-arrow-left"><img width="50" src="{% static "images/arrow-left.svg" %}" class="arrow left">
+      <div class="w-icon-slider-left hide-slider-arrows"></div>
+    </div>
+    <div class="w-slider-arrow-right"><img width="50" src="{% static "images/arrow-right.svg" %}" class="arrow right">
+      <div class="w-icon-slider-right hide-slider-arrows"></div>
+    </div>
+    <div class="w-slider-nav w-round slide-nav case-study"></div>
+  </div>
+</div>

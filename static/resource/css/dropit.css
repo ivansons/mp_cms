@@ -1,0 +1,49 @@
+.dropit {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropit .dropit-trigger {
+  display: inline;
+  position: relative;
+}
+
+.dropit .dropit-submenu {
+    background: white;
+    border-radius: 0 0 3px 3px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+    position: absolute;
+    top: 40px;
+    left: 0; /* dropdown left or right */
+    z-index: 1000;
+    display: none;
+    min-width: 200px;
+    list-style: none;
+    padding: 16px 16px 8px;
+    margin: 0;
+}
+
+.dropit .dropit-submenu li:last-child {
+  margin-bottom: 0.6rem;
+}
+
+.dropit .dropit-submenu li:last-child .button {
+  margin-bottom: 0;
+}
+
+.dropit .dropit-open .dropit-submenu {
+  display: block;
+}
+
+/* Smaller than tablet */
+@media (max-width: 750px) {
+  .dropit .dropit-trigger {
+    position: static;
+  }
+
+  .dropit .dropit-submenu {
+    width: 100%;
+  }
+}

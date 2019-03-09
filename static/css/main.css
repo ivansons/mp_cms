@@ -1,0 +1,615 @@
+.vertical-element {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.w-slider-dot {
+  background: #ffffff;
+  height: 10px;
+  width: 10px;
+}
+.w-slider-dot.w-active {
+  background: #fbcd00;
+  height: 10px;
+  width: 10px;
+}
+.overflow-image-left {
+  direction: rtl;
+}
+.mask {
+  display: none;
+}
+.close-button {
+  float: right;
+}
+.iframe-container {
+  text-align: center;
+}
+.page-cover {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.7;
+  z-index: 999;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
+.media-kit-box-msp-member {
+  border-bottom: 1px solid #d1d3d4 !important;
+  margin-top: 70px !important;
+  padding-bottom: 40px !important;
+}
+.inline-msp-member-link{
+  display: inline;
+}
+.media-kit-msp-member h3 {
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.how-it-works-alternate-background .w-section .w-row .w-col.w-col-4.w-col-stack.column:nth-child(2) {
+  background-color: #f2f2f3 !important;
+}
+.brand-guidelines h2 {
+  font-size: 48px;
+  line-height: 48px;
+  font-family: "Titillium Web";
+  font-weight: 200;
+  color: #ffffff;
+}
+.brand-guidelines-h3 {
+  font-size: 28px;
+  font-family: "Titillium Web";
+  font-weight: 100;
+}
+.brand-guidelines-h4 {
+  font-size: 21px;
+  font-family: "Titillium Web";
+  font-weight: 600;
+  color: #002f40;
+}
+.brand-guidelines-p1 p {
+  font-size: 21px;
+  font-family: "Open Sans";
+  font-weight: 300;
+  color: #5c5c5c;
+}
+.brand-guidelines-p2 p {
+  font-size: 18px;
+  font-family: "Open Sans";
+  font-weight: 300;
+}
+.brand-guidelines-p3 p {
+  font-size: 16px;
+  font-family: "Open Sans";
+  font-weight: 500;
+}
+.brand-guidelines-p4 p {
+  font-size: 16px !important;
+  font-familiy: "Open Sans" !important;
+  font-weight: 400 !important;
+  color: #002f40 !important;
+}
+.brand-guidelines-line-height-30 p {
+  line-height: 30px;
+}
+.color-ffffff p, .color-ffffff h1, .color-ffffff h2, .color-ffffff h3, .color-ffffff h4 {
+  color: #ffffff;
+}
+.color-002f40 p, .color-002f40 h1, .color-002f40 h2, .color-002f40 h3, .color-002f40 h4 {
+  color: #002f40;
+}
+.no-flicker {
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  -moz-transform: rotate(0);
+  -moz-transition: 0.5s;
+  filter: grayscale(1%);
+}
+::-moz-selection {
+  /* Code for Firefox */
+  background: #00a8e6;
+  color: white;
+}
+.tab-container-row {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+::selection {
+  background: #00a8e6;
+  color: white;
+}
+.pop-up-video iframe {
+  width: 800px;
+  height: 450px;
+  max-width: 800px;
+  max-height: 450px;
+}
+.cta-button-wrapper {
+  min-width: 310px;
+  display: inline-block;
+}
+.footer-sub-link li {
+  list-style-type: circle;
+  color: #1BA6DF;
+  font-size: 12px;
+  margin-bottom: 9px;
+}
+
+#footer-new .col {
+  text-align: left;
+}
+#footer-new .footer-nav li a {
+  color: inherit;
+  line-height: inherit;
+}
+#footer-new li a:link {
+  text-decoration: none;
+}
+#footer-new li a:visited {
+  text-decoration: none;
+}
+#footer-new li a:hover {
+  text-decoration: none;
+}
+#footer-new li a:active {
+  text-decoration: double;
+}
+#footer-new .bottom .container {
+  text-align: center;
+}
+#footer-new .bottom p {
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  font-weight: inherit;
+}
+#footer-new .bottom ul li a {
+  line-height: inherit;
+  display: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+}
+.search-section {
+  padding: 77px 0 62px;
+  text-align: left;
+}
+.search-section a {
+  display: inline-block;
+}
+.msp-webinar-event-main-title, .msp-webinar-event-main-text, .msp-webinar-event-sub-text {
+  text-align: left;
+}
+.news-nav a:focus {
+  text-decoration: none;
+}
+.container.media-kit-box.msp-webinar-event {
+  margin-top: 70px;
+  padding-bottom: 40px;
+}
+@media screen and (max-width: 480px), screen and (max-width: 480px) and (orientation: landscape), screen and (max-width: 480px) and (orientation: portrait) {
+  #footer-new .col {
+    text-align: center;
+  }
+}
+#footer-regions {
+  display: none;
+}
+@media screen and (min-width: 767px) {
+  #footer-regions {
+    display: block;
+  }
+}
+/* End additions to new_navigation / avista-styles-201615.css */
+@media screen and (min-width: 767px) {
+  .w-container {
+    max-width: 1170px;
+  }
+  .footer .w-container {
+    width: 750px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .footer .w-container {
+    width: 970px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .w-container {
+    max-width: 1170px;
+  }
+  .footer .w-container {
+    width: 1170px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .tab-container-row .col-md-12 {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+  .w-col.w-col-2.open ul {
+    display: block;
+  }
+  .w-col.w-col-2 ul {
+    display: none;
+  }
+  .pop-up-video iframe {
+    max-width: 300px;
+    max-height: 170px;
+  }
+  .mobile-footer-hide {
+    display: none;
+  }
+}
+@media screen and (max-width: 1200px) and (min-width: 768px) {
+  .pop-up-video iframe {
+    max-width: 640px;
+    max-height: 360px;
+  }
+}
+@media screen and (max-width: 991px) and (min-width: 768px) {
+  .news-nav a {
+    font-size: 13px;
+  }
+  .news-nav-lg ul {
+    padding-bottom: 20px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .three-up-image .w-col {
+    padding: 0 5px;
+  }
+  #news-nav-sm.dropdown.open {
+    margin-bottom: 135px;
+  }
+  #news-nav-sm a:focus {
+    text-decoration: none;
+  }
+  .media-kit.member-page .dropdown a.active.focus,
+  .media-kit.member-page .dropdown a.active:focus,
+  .media-kit.member-page .dropdown a.active:hover,
+  .media-kit.member-page .dropdown a:active:hover,
+  .media-kit.member-page .dropdown a:active,
+  .media-kit.member-page .dropdown a:focus,
+  .media-kit.member-page .dropdown a:visited {
+    text-decoration: none;
+  }
+}
+@media screen and (max-width: 767px), screen and (orientation: landscape) and (max-width: 767px), screen and (orientation: portrait ) and (max-width: 767px) {
+  .brand-guidelines-h3 {
+    font-size: 26px;
+    line-height: 30px;
+  }
+  .brand-guidelines-p1 p {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+/* START Add icon to menu item in left nav bar */
+/*
+TODO: Ideally, we should have added an extra field to each page or a
+TODO: specific widgy that can be attached to page indicating what icon to
+TODO: use. However, considering that marketing team might not have to
+TODO: change icon very often, this pure CSS implementation is adopted now.
+*/
+
+/* Haystack seach highlighting*/
+.highlighted {
+  background-color: yellow;
+}
+
+/* Modify settings for justified horizontal 3-up Next Generation Immersive
+Media List */
+@media screen and (min-width: 768px), screen and (min-width: 768px) and
+(orientation: landscape), screen and (min-width: 768px) and
+(orientation: portrait) {
+  .info-section.type2 .container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .home-page-next-generation-immersive-media-list {
+    display: flex;
+    justify-content: space-around;
+  }
+  .info-section.type2 .container > ul:after {
+    width: inherit;
+  }
+}
+.home-page-next-generation-immersive-media-list {
+  font-size: 0.1px;
+  line-height: 0;
+  list-style: outside none none;
+  list-style-type: none;
+  list-style-position: outside;
+  list-style-image: none;
+  margin: 0;
+  padding: 0 41px;
+  text-align: justify;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.info-section .home-page-next-generation-immersive-media-list li {
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  font-size: 13px;
+  line-height: 18px;
+  color: #002f40;
+  max-width: 255px;
+}
+
+@media screen and (max-width: 991px) {
+  .info-section.type2 .home-page-next-generation-immersive-media-list {
+    text-align: center;
+  }
+  .info-section .home-page-next-generation-immersive-media-list {
+    font-size: 0;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 550px), screen and (max-width: 550px) and
+(orientation: landscape), screen and (max-width: 550px) and
+(orientation: portrait) {
+  .info-section .home-page-next-generation-immersive-media-list li {
+    display: block;
+    width: auto;
+    padding: 0 0 20px;
+    margin: 0 auto;
+  }
+}
+/* End Modify settings for justified horizontal 3-up Next Generation Immersive
+   Media List */
+
+/* Modification to support non-link labels in navigation drop downs */
+.inactive-link {
+  pointer-events: none;
+  cursor: default;
+}
+/* End Modification to support non-link labels in navigation drop downs */
+
+/* Modifications to prevent videos and Showcase players in iframes from being
+   cut off in portrait orientation.  */
+.iframe-wrapper {
+  width: 100%;
+  max-width: 400px;
+  background: #CCC;
+}
+.video-wrapper {
+  height: 100%;
+}
+.iframe-wrapper .h_iframe {
+  position: relative;
+  padding-top: 56%;
+}
+.iframe-wrapper .h_iframe iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.centered-iframe-video {
+  margin: 0 auto;
+}
+
+/* width for some embedded Vimeo videos */
+.max-width-500 {
+  max-width: 500px;
+}
+
+.max-width-560 {
+  max-width: 560px;
+}
+
+/* width for Showcase player */
+.max-width-960 {
+  max-width: 960px;
+}
+/* End Modification to prevent videos and Showcase players in iframes from
+   being cut off */
+
+/* Use mp_web pagination style */
+.mp-pagination {
+  display: inline-block;
+  padding-left: 0;
+  margin: 20px 0;
+  border-radius: 1px;
+}
+
+.mp-pagination > li {
+  display: inline;
+}
+
+.mp-pagination > li > a,
+.mp-pagination > li > span {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  line-height: 1.42857143;
+  text-decoration: none;
+  color: #337ab7;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  margin-left: -1px;
+}
+
+.mp-pagination > li:first-child > a,
+.mp-pagination > li:first-child > span {
+  margin-left: 0;
+  border-bottom-left-radius: 1px;
+  border-top-left-radius: 1px;
+}
+
+.mp-pagination > li:last-child > a,
+.mp-pagination > li:last-child > span {
+  border-bottom-right-radius: 1px;
+  border-top-right-radius: 1px;
+}
+
+.mp-pagination > li > a:hover,
+.mp-pagination > li > span:hover,
+.mp-pagination > li > a:focus,
+.mp-pagination > li > span:focus {
+  z-index: 2;
+  color: #23527c;
+  background-color: #eeeeee;
+  border-color: #ddd;
+}
+
+.mp-pagination > .active > a,
+.mp-pagination > .active > span,
+.mp-pagination > .active > a:hover,
+.mp-pagination > .active > span:hover,
+.mp-pagination > .active > a:focus,
+.mp-pagination > .active > span:focus {
+  z-index: 3;
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #337ab7;
+  cursor: default;
+}
+
+.mp-pagination > .disabled > span,
+.mp-pagination > .disabled > span:hover,
+.mp-pagination > .disabled > span:focus,
+.mp-pagination > .disabled > a,
+.mp-pagination > .disabled > a:hover,
+.mp-pagination > .disabled > a:focus {
+  color: #777777;
+  background-color: #fff;
+  border-color: #ddd;
+  cursor: not-allowed;
+}
+
+.mp-pagination-container {
+  text-align: center;
+  width: 100%;
+  background-color: #F2F2F2;
+  padding-top: 8px;
+}
+
+.mp-pagination-container.fixed {
+  width: auto;
+  position: fixed;
+  bottom: 0;
+  background: white;
+  z-index: 1040;
+}
+
+.mp-pagination {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin: 16px 0;
+  padding: 16px auto;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+  color: #005468;
+}
+@media screen and (min-width: 992px) {
+  .mp-pagination {
+    margin: 5.33333333px 0;
+  }
+}
+
+.mp-pagination > li {
+  float: left;
+  margin-left: 10px;
+}
+
+.mp-pagination > li > a,
+.mp-pagination > li > span {
+  font-family: 'Titillium Web', 'Lucida', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  font-size: 16px;
+  color: #005468;
+  min-width: 30px;
+  height: 30px;
+  padding: 0 2px;
+  cursor: pointer;
+  text-align: center;
+  background-color: #FFFFFF;
+  border: none !important;
+  line-height: 30px;
+  box-sizing: border-box;
+}
+@media screen and (min-width: 992px) {
+  .mp-pagination > li > a,
+  .mp-pagination > li > span {
+    line-height: 38px;
+    min-width: 38px;
+    height: 38px;
+  }
+}
+
+.mp-pagination > li > a .ico,
+.mp-pagination > li > span .ico,
+.mp-pagination > li > a .ngdialog-close,
+.mp-pagination > li > span .ngdialog-close,
+.mp-pagination > li > a .sidebar .panel-heading h4 a:before,
+.mp-pagination > li > span .sidebar .panel-heading h4 a:before,
+.mp-pagination > li > a .modelSelect label:after,
+.mp-pagination > li > span .modelSelect label:after {
+  font-size: 13px;
+}
+
+.mp-pagination > li > a:hover {
+  background: #CFCFCF;
+}
+
+.mp-pagination > li > span:hover {
+  background: none;
+  cursor: default;
+}
+
+.mp-pagination > li.ng-hide + li:not(.ng-hide),
+.mp-pagination li:first-child {
+  margin-left: 0px;
+}
+
+.mp-pagination > .active > a {
+  color: #FFFFFF;
+}
+
+.mp-pagination > li > a:hover,
+.mp-pagination > li > a:focus {
+  background: #186d7e;
+  border-color: #186d7e;
+  color: #F2F2F2;
+}
+
+.mp-pagination > .active > a,
+.mp-pagination > .active > span,
+.mp-pagination > .active > a:hover,
+.mp-pagination > .active > span:hover,
+.mp-pagination > .active > a:focus,
+.mp-pagination > .active > span:focus {
+  z-index: 1040;
+  background: #005468;
+  border-color: #005468;
+  color: #FFFFFF;
+  cursor: default;
+  pointer-events: none;
+}
+/* End use mp_web pagination style */

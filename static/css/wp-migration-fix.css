@@ -1,0 +1,166 @@
+.page-template-page-about .white {
+  color: #002f40;
+}
+
+.button-holder .model3d1.btn-default:link {
+  text-decoration: none;
+  background-color: #002f40;
+  color: white;
+}
+
+.button-holder .model3d1.btn-default:active {
+  text-decoration: none;
+  background-color: #002f40;
+  color: white;
+}
+
+.button-holder .model3d1.btn-default:visited {
+  text-decoration: none;
+  background-color: #002f40;
+  color: white;
+}
+
+.button-holder .model3d1.btn-default:hover {
+  text-decoration: none;
+  background-color: #002f40;
+  color: white;
+}
+
+.btn-default.tres:link {
+  text-decoration: none;
+  background-color: #002f40;
+  color: white;
+}
+
+.btn-default.tres:active {
+  text-decoration: none;
+  background-color: #002f40;
+  color: white;
+}
+
+.btn-default.tres:visited {
+  text-decoration: none;
+  background-color: #002f40;
+  color: white;
+}
+
+.btn-default.tres:hover {
+  text-decoration: none;
+  background-color: #002f40;
+  color: white;
+}
+
+.btn-default:hover {
+  background-color: #002f40;
+  color: white;
+}
+
+/* frequently-asked-questions fixes */
+.page-template-page-faq .info-section {
+  text-align: left;
+}
+
+.page-template-page-faq .info-section a:link {
+  text-decoration: none;
+  color: #1BA6DF;
+}
+
+.page-template-page-faq .info-section a:active {
+  text-decoration: none;
+  color: #1BA6DF;
+}
+
+.page-template-page-faq .info-section a:visited {
+  text-decoration: none;
+  color: #1BA6DF;
+}
+
+.page-template-page-faq .info-section a:hover {
+  text-decoration: none;
+  color: #FBCD00;
+}
+
+.page-id-4076 .faq-wrap a {
+  color: #1BA6DF;
+}
+/* End frequently-asked-questions fixes */
+
+/* virtual-reality fixes */
+.page-template-page-virtual-reality .btn-default:link {
+  text-decoration: none;
+  background-color: #002f40;
+  color: white;
+}
+
+.page-template-page-virtual-reality .btn-default:active {
+  text-decoration: none;
+  background-color: #002f40;
+  color: white;
+}
+
+.page-template-page-virtual-reality .btn-default:visited {
+  text-decoration: none;
+  background-color: #002f40;
+  color: white;
+}
+
+.page-template-page-virtual-reality .btn-default:hover {
+  background-color: #002f40;
+  color: white;
+}
+
+.form-frame .virtual-reality-vimeo .aspect-ratio {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 51%;
+}
+
+.form-frame .virtual-reality-vimeo .aspect-ratio iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+/* End virtual-reality fixes */
+
+/* real-estate-photographer-matterport fixes */
+button.btn-default.active.focus, button.btn-default.active:focus,
+button.btn-default.active:hover, button.btn-default:active.focus,
+button.btn-default:active:focus, button.btn-default:active:hover,
+button.btn-default:active, button.btn-default:focus, button.btn-default:visited,
+a.btn-default:active, a.btn-default:focus, a.btn-default:visited {
+  text-decoration: none;
+  background-color: #002f40;
+  color: white;
+}
+/* End real-estate-photographer-matterport fixes */
+
+/* news/matterport-media-kit fixes */
+.top-section.smaller.xstop.matterport-media-kit {
+    min-height: 125px;
+}
+
+.nav-bar {
+  max-height: 72px;
+}
+
+.top-section.smaller h1 {
+  color: #ffffff;
+  padding-top: 44px;
+}
+
+.top-section.smaller.xstop .news-nav-lg ul {
+    margin-top: 40px;
+}
+/* End news/matterport-media-kit fixes */
+
+/* Group 19 fixes */
+@media screen and (max-width: 767px), screen and (max-width: 767px) and (orientation: landscape), screen and (max-width: 767px) and (orientation: portrait) {
+  .options-box h2, .capture h2 {
+    font-size: 26px;
+    line-height: 30px;
+  }
+}
+/* End Group 19 fixes */

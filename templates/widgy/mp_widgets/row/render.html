@@ -1,0 +1,8 @@
+{% load widgy_tags %}
+<div{% if self.use_side_padding %} class="container"{% endif %}>
+  <div class="row">
+    {% for child in self.get_children %}
+      {% render child %}
+    {% endfor %}
+  </div>
+</div>

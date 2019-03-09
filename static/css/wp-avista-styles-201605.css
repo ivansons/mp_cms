@@ -1,0 +1,15 @@
+.photo-wrap {
+    background-color: #f2f2f3;
+}
+
+.homepage #wrapper,
+.inner #wrapper {
+    padding: 0;
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+#wrapper {
+    padding-left: 0px !important;
+}

@@ -1,0 +1,23 @@
+<div class="post">
+  <div class="videoframe">
+    {% if object.video_link %}
+      <div class="holder">
+        <iframe src="{{ object.video_link }}" width="100%"></iframe>
+      </div>
+    {% endif %}
+  </div>
+  <div class="text">
+    {% if object.icon %}
+      <div class="ico"><img src="{{ object.icon.url }}"{% if object.icon_alt_text %} alt="{{ object.icon_alt_text }}"{% endif %}></div>
+    {% endif %}
+    <h3>{{ object.title }}</h3>
+    <span class="small-text">
+      Posted {{ object.publication_date|date:"DATE_FORMAT" }}
+      {% if object.external_author %}
+        by {{ object.external_author }}
+      {% endif %}
+    </span>
+    <p>{{ object.html_preview|striptags }}</p>
+    <a href="{% if active_link == 'Press Releases' %}{{ object.get_absolute_url }}{% else %}{{ object.external_link }}{% endif %}" class="read-more">Read more</a>
+  </div>
+</div>

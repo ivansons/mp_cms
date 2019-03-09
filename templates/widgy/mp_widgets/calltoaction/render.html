@@ -1,0 +1,8 @@
+{% load staticfiles %}
+{% load widgy_tags %}
+<a href="{{ self.link.get_absolute_url }}" data-ix="new-button-hover" class="w-inline-block new-button"><img src="{% static "images/button-left.png" %}" class="small">
+  <div class="button-center small">
+    <div class="CallToAction">{{ self.text }}</div>
+  </div>
+  <img src="{% static "images/button-right.png" %}" class="small"><img src="{% static "images/button-arrow.png" %}" class="button-arrow small">
+</a>

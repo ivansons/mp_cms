@@ -1,0 +1,33 @@
+{% load widgy_tags %}
+<div class="tab-container-row">
+  <div class="col-md-12">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs nav-justified" role="tablist">
+      {% for child in self.get_children %}
+        <li role="presentation"{% if forloop.counter == 1 %} class="active"{% endif %}>
+          <a href="" aria-controls="{{ child.get_hashtag }}" role="tab" data-toggle="tab" id="{{ child.get_hashtag }}_link_{{ self.id }}">
+            {% if child.icon %}
+              <img src="{{ child.icon.url }}">
+            {% endif %}
+            {{ child.title }}
+          </a>
+          <script>
+            $( '#{{ child.get_hashtag }}_link_{{ self.id }}' ).click(function( e ) {
+              e.preventDefault();
+              $( '.tab-pane-{{ self.id }}' ).removeClass( "active" );
+              $( '#{{ child.get_hashtag }}_tabpanel_{{ self.id }}' ).addClass( "active" );
+            });
+          </script>
+        </li>
+      {% endfor %}
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+      {% for child in self.get_children %}
+        <div role="tabpanel" class="tab-pane tab-pane-{{ self.id }} fade in{% if forloop.counter == 1 %} active{% endif %}" id="{{ child.get_hashtag }}_tabpanel_{{ self.id }}">
+          {% render child %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
