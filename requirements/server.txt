@@ -55,7 +55,7 @@ oauthlib==2.1.0
 paramiko==2.4.1
 pathlib==1.0.1
 phonenumbers==8.9.12
-Pillow==5.2.0
+Pillow==6.2.0
 psycopg2==2.7.5
 pyasn1==0.4.4
 pyasn1-modules==0.2.2
