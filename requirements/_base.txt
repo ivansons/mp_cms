@@ -1,6 +1,6 @@
 # venv requirements for base env
 boto==2.49.0
-Django==1.8.19
+Django==2.2.24
 django-blog-zinnia==0.16  # Django 1.8
 django-ckeditor==5.5.0  # Django 1.8
 django-colorful==1.2.0
